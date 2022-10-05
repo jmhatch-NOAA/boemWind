@@ -1,0 +1,26 @@
+Package: boemWind
+Title: Download BOEM Wind Energy Areas (WEAs) 
+Version: 0.0.1
+Authors@R: 
+    person(given = 'Joshua',
+           family = 'Hatch',
+           role = c('aut', 'cre'),
+           email = 'joshua.hatch@noaa.gov')
+Description: Provide BOEM WEAs as sf objects stored in RData files.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Depends: 
+    R (>= 2.10),
+    sf
+Suggests: 
+    devtools,
+    dplyr,
+    here,
+    httr,
+    jsonlite,
+    magrittr,
+    stringr,
+    usethis

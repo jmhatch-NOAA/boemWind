@@ -1,2 +1,3 @@
 # boem-wind
-Download BOEM Wind Energy Areas (WEAs)
+
+A repository of BOEM WEAs in simple features [`sf`](https://r-spatial.github.io/sf/) format.
