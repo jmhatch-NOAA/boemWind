@@ -23,7 +23,7 @@ jobs:
         run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "httr", "jsonlite", "magrittr", "stringr", "usethis"))'
 
       - name: Update R pkg
-        run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") %>% source()'
+        run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
 
       - name: Set up Git
         run: |
