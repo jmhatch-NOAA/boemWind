@@ -20,6 +20,6 @@
 #' @details
 #' BOEM wind lease area outlines were updated on 2022/6/30 (version 10.81) and BOEM wind planning area outlines were updated on 2022/08/18 (version 10.81).
 #'
-#' There may be more up to date BOEM wind planning areas than those included in NEFSCspatial.
+#' There may be more up to date BOEM wind planning areas than those included in boemWind.
 #' It is recommended that you reach out to the Wind Team at the NEFSC (\email{angela.silva@@noaa.gov}) to confirm.
 NULL
