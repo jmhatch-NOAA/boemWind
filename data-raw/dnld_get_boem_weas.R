@@ -126,7 +126,7 @@ update_weas_R <- function() {
 #' @details
 #' BOEM wind lease area outlines were updated on ", active_update," (version ", active_layer_info$currentVersion,") and BOEM wind planning area outlines were updated on ", planning_update," (version ", planning_layer_info$currentVersion, ").
 #'
-#' There may be more up to date BOEM wind planning areas than those included in NEFSCspatial.
+#' There may be more up to date BOEM wind planning areas than those included in boemWind.
 #' It is recommended that you reach out to the Wind Team at the NEFSC (\\email{angela.silva@@noaa.gov}) to confirm.
 NULL")
 
