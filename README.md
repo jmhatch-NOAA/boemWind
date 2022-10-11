@@ -4,6 +4,7 @@
 
 A repository of BOEM WEAs in simple features [`sf`](https://r-spatial.github.io/sf/) format stored in a RData file.
 
+### To Install
 ```r
 devtools::install_github('jmhatch-NOAA/boemWind')
 ```
