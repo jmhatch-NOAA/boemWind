@@ -40,8 +40,8 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
   list_layers <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>% sf::st_layers()
 
   # grab layer names
-  active_name <- list_layers$name[stringr::str_detect(list_layers$name, 'WindLeaseOutlines')]
-  planning_name <- list_layers$name[stringr::str_detect(list_layers$name, 'WindPlanningAreaOutlines')]
+  active_name <- list_layers$name[stringr::str_detect(list_layers$name, 'Wind_Lease_Outlines')]
+  planning_name <- list_layers$name[stringr::str_detect(list_layers$name, 'Wind_Planning_Area_Outlines')]
 
   # extract dates
   active_date <- paste(stringr::str_split(active_name, pattern = '_')[[1]][c(4,2,3)], collapse = '/')

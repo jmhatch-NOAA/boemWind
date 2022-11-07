@@ -1,2 +1,5 @@
+^README.md$
+^\.gitignore$
 ^boemWind\.Rproj$
+^\.Rhistory$
 ^\.Rproj\.user$
