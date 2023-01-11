@@ -5,6 +5,7 @@
 # needed R libraries
 library(dplyr)
 library(magrittr)
+library(here)
 
 # location to save / access the gdb
 gdb_loc <- 'data-raw/boem-renewable-energy-geodatabase'
