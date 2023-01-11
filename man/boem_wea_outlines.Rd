@@ -25,7 +25,7 @@ data('boem_wea_outlines')
 A \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 }
 \details{
-BOEM wind lease area outlines were updated on 12/Lease/Outlines (version 11) and BOEM wind planning area outlines were updated on Outlines/Planning/Area (version ).
+BOEM wind lease area outlines were updated on 2022-12-06 (version 11) and BOEM wind planning area outlines were updated on 2023-01-10 (version 11).
 
 There may be more up to date BOEM wind planning areas than those included in boemWind.
 It is recommended that you reach out to the Wind Team at the NEFSC (\email{angela.silva@noaa.gov}) to confirm.
