@@ -5,7 +5,6 @@
 # needed R libraries
 library(dplyr)
 library(magrittr)
-library(here)
 
 # location to save / access the gdb
 gdb_loc <- 'data-raw/boem-renewable-energy-geodatabase'
@@ -66,9 +65,6 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
 
   # combine
   boem_wea_outlines <- sf:::rbind.sf(active_shapes, planning_shapes)
-
-  # delete columns w/ all NAs
-  boem_wea_outlines %<>% dplyr::select(-c(Shape__Area, Shape__Length))
 
   # save or not
   if (save_clean) {
