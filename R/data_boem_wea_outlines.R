@@ -18,7 +18,7 @@
 #' @keywords datasets
 #' @source \url{https://www.boem.gov/renewable-energy/mapping-and-data/renewable-energy-gis-data}
 #' @details
-#' BOEM wind lease area outlines were updated on 2022-12-06 (version 11) and BOEM wind planning area outlines were updated on 2023-01-10 (version 11).
+#' BOEM wind lease area outlines were updated on 2022-12-06 (version 11) and BOEM wind planning area outlines were updated on 2023-01-10 (version ).
 #'
 #' There may be more up to date BOEM wind planning areas than those included in boemWind.
 #' It is recommended that you reach out to the Wind Team at the NEFSC (\email{angela.silva@@noaa.gov}) to confirm.
