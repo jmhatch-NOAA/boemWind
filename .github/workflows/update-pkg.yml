@@ -37,9 +37,9 @@ jobs:
       #     git add -A && git commit -m 'Build site' || echo "No changes to commit"
       #     git push origin || echo "No changes to commit"
 
-      - name: Deploy stage
+      - name: Trigger workflow
         run: |
           curl -X POST https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.PAT_WIND }} \
+          -u ${{ secrets.ACCESS_TOKEN }} \
           --data '{"event_type": "Trigger workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
