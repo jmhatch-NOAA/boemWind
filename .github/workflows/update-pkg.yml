@@ -37,7 +37,7 @@ jobs:
       #     git add -A && git commit -m 'Build site' || echo "No changes to commit"
       #     git push origin || echo "No changes to commit"
 
-      - name: Trigger workflow
+      - name: Trigger workflow v2
         run: |
           curl \
             -X POST \
