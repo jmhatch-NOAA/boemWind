@@ -40,9 +40,9 @@ jobs:
           github-token: ${{ secrets.WIND_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
-              'jmhatch-NOAA',
-              'READ-PSB-TE-Wind',
-              'workflows/update_readme.yml',
-              'main',
+              owner: 'jmhatch-NOAA',
+              repo: 'READ-PSB-TE-Wind',
+              workflow_id: 'workflows/update_readme.yml',
+              ref: 'main'
             });
             console.log(result);
