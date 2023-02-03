@@ -12,26 +12,26 @@ jobs:
       - uses: actions/checkout@v3
       - uses: r-lib/actions/setup-r@v2
 
-      # - name: Install R package linux dependencies
-      #   run: |
-      #     sudo apt update
-      #     sudo apt-get install libcurl4-openssl-dev libnetcdf-dev libudunits2-dev libgdal-dev libharfbuzz-dev libfribidi-dev
-      #   shell: bash
-      #
-      # - name: Install R packages
-      #   run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "httr", "jsonlite", "magrittr", "sf", "stringr", "usethis"))'
-      #
-      # - name: Update R pkg
-      #   run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
-      #
-      # - name: Set up Git
-      #   run: |
-      #     git config --local user.email "actions@github.com"
-      #     git config --local user.name "GitHub Actions"
-      # - name: Commit all changes
-      #   run: |
-      #     git add -A && git commit -m 'Build site' || echo "No changes to commit"
-      #     git push origin || echo "No changes to commit"
+      - name: Install R package linux dependencies
+        run: |
+          sudo apt update
+          sudo apt-get install libcurl4-openssl-dev libnetcdf-dev libudunits2-dev libgdal-dev libharfbuzz-dev libfribidi-dev
+        shell: bash
+
+      - name: Install R packages
+        run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "httr", "jsonlite", "magrittr", "sf", "stringr", "usethis"))'
+
+      - name: Update R pkg
+        run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+      - name: Commit all changes
+        run: |
+          git add -A && git commit -m 'Build site' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
 
       - name: Trigger workflow
         run: |
