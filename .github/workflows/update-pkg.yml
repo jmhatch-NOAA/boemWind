@@ -2,14 +2,12 @@ name: update-pkg
 
 on:
   push:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
-     inputs:
-      wind_workflow:
-        description: 'Trigger update_readme'
-        required: true
-        default: 'wind_workflow'
+    inputs:
+    wind_workflow:
+      description: 'Trigger update_readme'
+      required: true
+      default: 'wind_workflow'
 
 jobs:
   update-pkg:
