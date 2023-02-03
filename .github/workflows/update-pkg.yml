@@ -1,14 +1,19 @@
+name: update-pkg
+
 on:
   push:
   schedule:
     - cron: "0 0 * * *"
-name: update-pkg
+  workflow_dispatch:
+     inputs:
+      wind_workflow:
+        description: 'Trigger update_readme'
+        required: true
+        default: 'wind_workflow'
 
 jobs:
   update-pkg:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v2
@@ -35,14 +40,9 @@ jobs:
           git push origin || echo "No changes to commit"
 
       - name: Deploy stage
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.WIND_TOKEN }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'jmhatch-NOAA',
-              repo: 'READ-PSB-TE-Wind',
-              workflow_id: 'workflows/update_readme.yml',
-              ref: 'main'
-            });
-            console.log(result);
+        run: |
+          curl -X POST https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.PAT_WIND }} \
+          --data '{"event_type": "Trigger workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+        - uses: actions/checkout@v3
