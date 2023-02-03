@@ -37,7 +37,7 @@ jobs:
       - name: Deploy stage
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PAT_TOKEN }}
+          github-token: ${{ secrets.WIND_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               'jmhatch-NOAA',
