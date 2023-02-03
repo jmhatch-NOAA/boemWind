@@ -45,3 +45,4 @@ jobs:
               'workflows/update_readme.yml',
               'main',
             });
+            console.log(result);
