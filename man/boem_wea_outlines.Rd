@@ -5,7 +5,7 @@
 \alias{boem_wea_outlines}
 \title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
-A \code{sf} collection with 75 features and 23 fields.
+A \code{sf} collection with 76 features and 24 fields.
 \describe{
 \item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{XY}
@@ -25,7 +25,7 @@ data('boem_wea_outlines')
 A \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 }
 \details{
-BOEM wind lease area outlines were updated on 2022-12-06 (version 11) and BOEM wind planning area outlines were updated on 2023-01-10 (version ).
+BOEM wind lease area outlines were updated on NA (version 11) and BOEM wind planning area outlines were updated on NA (version ).
 
 There may be more up to date BOEM wind planning areas than those included in boemWind.
 It is recommended that you reach out to the Wind Team at the NEFSC (\email{angela.silva@noaa.gov}) to confirm.
