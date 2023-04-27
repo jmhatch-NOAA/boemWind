@@ -5,11 +5,11 @@
 \alias{boem_wea_outlines}
 \title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
-A \code{sf} collection with 76 features and 24 fields.
+A \code{sf} collection with 71 features and 24 fields.
 \describe{
 \item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{XY}
-\item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -66.9108 ymax: 44.769}
+\item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -67.2804 ymax: 44.248}
 \item{Geodetic CRS}{WGS 84}
 \item{Source}{data-raw/boem-renewable-energy-geodatabase/BOEMWindLayers_4Download.gdb}
 \item{Fields}{Field descriptions can be found \href{https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer/layers}{here}.}
