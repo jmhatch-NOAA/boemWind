@@ -1,5 +1,8 @@
+^\.Rproj\.user$
+^\.github$
+^\.git$
+^data-raw$
 ^README.md$
 ^\.gitignore$
 ^boemWind\.Rproj$
 ^\.Rhistory$
-^\.Rproj\.user$
