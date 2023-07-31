@@ -18,8 +18,5 @@
 #' @keywords datasets
 #' @source \url{https://www.boem.gov/renewable-energy/mapping-and-data/renewable-energy-gis-data}
 #' @details
-#' BOEM wind lease area outlines were updated on NA (version ) and BOEM wind planning area outlines were updated on NA (version ).
-#'
-#' There may be more up to date BOEM wind planning areas than those included in boemWind.
-#' It is recommended that you reach out to the Wind Team at the NEFSC (\email{angela.silva@@noaa.gov}) to confirm.
+#' BOEM wind lease area outlines.
 NULL

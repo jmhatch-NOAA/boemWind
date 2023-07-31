@@ -44,10 +44,12 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
   planning_name <- list_layers$name[stringr::str_detect(list_layers$name, 'Wind_Planning_Area_Outlines')]
 
   # extract dates
-  active_date <- paste(stringr::str_split(active_name, pattern = '_')[[1]][4:6], collapse = '/') %>%
-    as.Date(format = '%m/%d/%y')
-  planning_date <- paste(stringr::str_split(planning_name, pattern = '_')[[1]][5:7], collapse = '/') %>%
-    as.Date(format = '%b/%d/%Y')
+  # active_date <- paste(stringr::str_split(active_name, pattern = '_')[[1]][4:6], collapse = '/') %>%
+  #   as.Date(format = '%m/%d/%y')
+  # planning_date <- paste(stringr::str_split(planning_name, pattern = '_')[[1]][5:7], collapse = '/') %>%
+  #   as.Date(format = '%b/%d/%Y')
+  active_date <- 'Unknown'
+  planning_date <- 'Unknown'
 
   # read in feature layers
   active_shapes <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>%
@@ -106,9 +108,9 @@ update_weas_R <- function() {
   planning_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Planning') %>% dplyr::pull(UPDATED) %>% unique()
 
   # query ArcGIS REST service
-  url = 'https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer'
-  active_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/0'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
-  planning_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/5'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
+  # url = 'https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer'
+  # active_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/0'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
+  # planning_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/5'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
 
   # paste string
   txt_file <- paste0("#' @title BOEM Renewable Energy Lease Areas and Wind Planning Areas
@@ -131,10 +133,7 @@ update_weas_R <- function() {
 #' @keywords datasets
 #' @source \\url{https://www.boem.gov/renewable-energy/mapping-and-data/renewable-energy-gis-data}
 #' @details
-#' BOEM wind lease area outlines were updated on ", active_update," (version ", active_layer_info$currentVersion,") and BOEM wind planning area outlines were updated on ", planning_update," (version ", planning_layer_info$currentVersion, ").
-#'
-#' There may be more up to date BOEM wind planning areas than those included in boemWind.
-#' It is recommended that you reach out to the Wind Team at the NEFSC (\\email{angela.silva@@noaa.gov}) to confirm.
+#' BOEM wind lease area outlines.
 NULL")
 
   # output
