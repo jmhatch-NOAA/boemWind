@@ -65,6 +65,14 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
   active_shapes[cols_not_active] = NA
   planning_shapes[cols_not_planning] = NA
 
+  # ensure same crs
+  if (sf::st_crs(active_shapes) != sf::st_crs(4326)) {
+    active_shapes <- active_shapes |> sf::st_transform(4326)
+  }
+  if (sf::st_crs(planning_shapes) != sf::st_crs(4326)) {
+    planning_shapes <- planning_shapes |> sf::st_transform(4326)
+  }
+
   # combine
   boem_wea_outlines <- sf:::rbind.sf(active_shapes, planning_shapes)
 
