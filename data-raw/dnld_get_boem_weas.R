@@ -48,16 +48,14 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
   #   as.Date(format = '%m/%d/%y')
   # planning_date <- paste(stringr::str_split(planning_name, pattern = '_')[[1]][5:7], collapse = '/') %>%
   #   as.Date(format = '%b/%d/%Y')
-  active_date <- 'Unknown'
-  planning_date <- 'Unknown'
 
   # read in feature layers
   active_shapes <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>%
     sf::st_read(layer = active_name) %>%
-    dplyr::mutate(LEASE_STAGE = 'Active', UPDATED = active_date)
+    dplyr::mutate(LEASE_STAGE = 'Active')
   planning_shapes <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>%
     sf::st_read(layer = planning_name) %>%
-    dplyr::mutate(LEASE_STAGE = 'Planning', UPDATED = planning_date)
+    dplyr::mutate(LEASE_STAGE = 'Planning')
 
   # figure out which columns are in one and not the other
   cols_not_planning = colnames(active_shapes)[!colnames(active_shapes) %in% colnames(planning_shapes)]
@@ -104,8 +102,8 @@ update_weas_R <- function() {
   x_max <- round(bbox['xmax'], 4)
   y_min <- round(bbox['ymin'], 4)
   y_max <- round(bbox['ymax'], 4)
-  active_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Active') %>% dplyr::pull(UPDATED) %>% unique()
-  planning_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Planning') %>% dplyr::pull(UPDATED) %>% unique()
+  # active_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Active') %>% dplyr::pull(UPDATED) %>% unique()
+  # planning_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Planning') %>% dplyr::pull(UPDATED) %>% unique()
 
   # query ArcGIS REST service
   # url = 'https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer'
@@ -124,7 +122,6 @@ update_weas_R <- function() {
 #'   \\item{Bounding box}{xmin: ", x_min," ymin: ", y_min," xmax: ", x_max," ymax: ", y_max,"}
 #'   \\item{Geodetic CRS}{", sf::st_crs(boem_wea_outlines)$input,"}
 #'   \\item{Source}{data-raw/boem-renewable-energy-geodatabase/BOEMWindLayers_4Download.gdb}
-#'   \\item{Fields}{Field descriptions can be found \\href{https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer/layers}{here}.}
 #' }
 #'
 #' @docType data
@@ -132,8 +129,6 @@ update_weas_R <- function() {
 #' @usage data('boem_wea_outlines')
 #' @keywords datasets
 #' @source \\url{https://www.boem.gov/renewable-energy/mapping-and-data/renewable-energy-gis-data}
-#' @details
-#' BOEM wind lease area outlines.
 NULL")
 
   # output
