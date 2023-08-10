@@ -1,4 +1,4 @@
-name: update-pkg
+name: update-pkgdown
 
 on:
   push:
