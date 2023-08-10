@@ -6,7 +6,7 @@ Authors@R:
            family = 'Hatch',
            role = c('aut', 'cre'),
            email = 'joshua.hatch@noaa.gov')
-Description: Provide BOEM WEAs as sf objects stored in RData files.
+Description: Provide BOEM WEAs as sf objects stored in an *.rda file.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -24,3 +24,4 @@ Suggests:
     magrittr,
     stringr,
     usethis
+URL: https://jmhatch-noaa.github.io/boemWind/

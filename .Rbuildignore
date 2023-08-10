@@ -6,3 +6,6 @@
 ^\.gitignore$
 ^boemWind\.Rproj$
 ^\.Rhistory$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

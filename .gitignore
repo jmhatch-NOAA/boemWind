@@ -5,3 +5,5 @@
 *.Rproj
 .Rhistory
 .git
+docs
+inst/temp

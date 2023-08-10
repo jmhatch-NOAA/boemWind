@@ -1,0 +1,29 @@
+url: https://jmhatch-noaa.github.io/boemWind/
+
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    - issue
+    right:
+    - github
+
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+
+    reference:
+      text: Reference
+      icon: fa-file-code fa-lg
+      href: reference/index.html
+
+    issue:
+      text: Issues
+      icon: fa-question-circle fa-lg
+      href: https://github.com/jmhatch-NOAA/boemWind/issues
+
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/jmhatch-NOAA/boemWind
