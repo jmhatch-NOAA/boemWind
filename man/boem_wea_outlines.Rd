@@ -5,7 +5,7 @@
 \alias{boem_wea_outlines}
 \title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
-A \code{sf} collection with 55 features and 27 fields.
+An \code{sf} collection with 55 features and 27 fields.
 \describe{
 \item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{XY}
@@ -21,6 +21,6 @@ A \code{sf} collection with 55 features and 27 fields.
 data('boem_wea_outlines')
 }
 \description{
-A \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
+An \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 }
 \keyword{datasets}

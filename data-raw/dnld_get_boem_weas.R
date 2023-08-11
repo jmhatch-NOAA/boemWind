@@ -113,9 +113,9 @@ update_weas_R <- function() {
   # paste string
   txt_file <- paste0("#' @title BOEM Renewable Energy Lease Areas and Wind Planning Areas
 #'
-#' @description A \\code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
+#' @description An \\code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 #'
-#' @format A \\code{sf} collection with ", n_features," features and ", n_fields," fields.
+#' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
 #'   \\item{Geometry type}{", sf::st_geometry_type(boem_wea_outlines) %>% unique() %>% paste(collapse = ', '),"}
 #'   \\item{Dimension}{", ifelse(all(sf::st_dimension(boem_wea_outlines) == 2), 'XY', 'UNDET'),"}
