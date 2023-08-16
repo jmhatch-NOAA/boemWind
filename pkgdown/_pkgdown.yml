@@ -6,6 +6,8 @@ navbar:
     - home
     - reference
     - issue
+    - active
+    - planning
     right:
     - github
 
@@ -23,6 +25,16 @@ navbar:
       text: Issues
       icon: fa-question-circle fa-lg
       href: https://github.com/jmhatch-NOAA/boemWind/issues
+
+    active:
+      text: Active WEAs
+      icon: fa-map fa-lg
+      href: maps/active_weas.html
+
+    planning:
+      text: Planning WEAs
+      icon: far fa-map fa-lg
+      href: maps/planning_weas.html
 
     github:
       icon: fa-github fa-lg
