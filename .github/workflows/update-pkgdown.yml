@@ -10,7 +10,7 @@ on:
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     # Only restrict concurrency for non-PR jobs
     concurrency:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
@@ -20,17 +20,33 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-
+      - uses: r-lib/actions/setup-r@v2
       - uses: r-lib/actions/setup-pandoc@v2
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: Cache R packages
+        uses: actions/cache@v2
         with:
-          extra-packages: any::pkgdown, local::.
-          needs: website
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install binary dependencies
+        if: runner.os != 'Linux'
+        run: |
+          remotes::install_deps(dependencies = TRUE, type = "binary")
+        shell: Rscript {0}
+
+      - name: Install pkgdown
+        run: |
+          install.packages("pkgdown", type = "binary")
+        shell: Rscript {0}
 
       - name: Install package
         run: R CMD INSTALL .

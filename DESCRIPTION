@@ -19,8 +19,10 @@ Suggests:
     devtools,
     dplyr,
     here,
+    htmlwidgets,
     httr,
     jsonlite,
+    leaflet,
     magrittr,
     stringr,
     usethis
