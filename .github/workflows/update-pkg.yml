@@ -24,7 +24,7 @@ jobs:
         shell: bash
 
       - name: Install R packages
-        run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "httr", "jsonlite", "magrittr", "sf", "stringr", "usethis"))'
+        run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "htmlwidgets", "httr", "jsonlite", "leaflet", "magrittr", "pkgdown", "sf", "stringr", "usethis"))'
 
       - name: Update R pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
@@ -45,3 +45,23 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/actions/workflows/update_readme.yml/dispatches \
           -d '{"ref": "main"}'
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Create leaflet maps
+        run: |
+          source("./data-raw/create_leaflet_maps.R", echo = TRUE)
+        shell: Rscript {0}
+
+      - name: Build site
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs
