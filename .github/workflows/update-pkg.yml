@@ -58,13 +58,6 @@ jobs:
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
-      - name: Copy leaflet maps
-        run: |
-          git checkout main -- pkgdown/leaflet_maps
-          git checkout gh-pages
-          git add -A && git commit -m 'Copied leaflep_maps from main to gh-pages' || echo "No changes to commit"
-          git push origin gh-pages || echo "No changes to commit"
-
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4.4.1
