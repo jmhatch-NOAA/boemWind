@@ -70,5 +70,5 @@ jobs:
         run: |
           git checkout main -- ./pkgdown/leaflet_maps
           git checkout gh-pages
-          git add leaflet_maps
+          git add -u
           git commit -m "Copied leaflep_maps from main to gh-pages"
