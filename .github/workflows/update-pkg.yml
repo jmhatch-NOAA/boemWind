@@ -34,6 +34,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+
       - name: Commit all changes
         run: |
           git add -A && git commit -m 'Downloaded BOEM WEAs' || echo "No changes to commit"
@@ -51,9 +52,7 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Create leaflet maps
-        run: |
-          source("./data-raw/create_leaflet_maps.R", echo = TRUE)
-        shell: Rscript {0}
+        run: Rscript -e 'here::here("data-raw/create_leaflet_maps.R") |> source()'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
@@ -66,3 +65,10 @@ jobs:
           clean: false
           branch: gh-pages
           folder: docs
+
+      - name: Copy leaflet maps
+        run: |
+          git checkout main -- ./pkgdown/leaflet_maps
+          git checkout gh-pages
+          git add leaflet_maps
+          git commit -m "Copied leaflep_maps from main to gh-pages"

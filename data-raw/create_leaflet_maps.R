@@ -94,9 +94,9 @@ planning_out <- c(planning_html[1:5],
 writeLines(planning_out, here::here('pkgdown', 'leaflet_maps', 'planning_weas.html'))
 
 # create maps folder in docs
-if (!file.exists(here::here('docs', 'maps'))) dir.create(here::here('docs', 'maps'))
+# if (!file.exists(here::here('docs', 'maps'))) dir.create(here::here('docs', 'maps'))
 
 # copy html files to maps
-from <- here::here('pkgdown', 'leaflet_maps') |>
-  list.files(full.names = TRUE)
-file.copy(from, here::here('docs', 'maps'), recursive = TRUE)
+# from <- here::here('pkgdown', 'leaflet_maps') |>
+#   list.files(full.names = TRUE)
+# file.copy(from, here::here('docs', 'maps'), recursive = TRUE)
