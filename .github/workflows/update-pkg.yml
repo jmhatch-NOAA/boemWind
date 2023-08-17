@@ -30,6 +30,12 @@ jobs:
       - name: Update R pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
 
+      - name: Install pkg
+        run: R CMD INSTALL .
+
+      - name: Create leaflet maps
+        run: Rscript -e 'here::here("data-raw/create_leaflet_maps.R") |> source()'
+
       - name: Set up Git
         run: |
           git config --local user.email "actions@github.com"
@@ -48,12 +54,6 @@ jobs:
           https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/actions/workflows/update_readme.yml/dispatches \
           -d '{"ref": "main"}'
 
-      - name: Install pkg
-        run: R CMD INSTALL .
-
-      - name: Create leaflet maps
-        run: Rscript -e 'here::here("data-raw/create_leaflet_maps.R") |> source()'
-
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
@@ -70,7 +70,5 @@ jobs:
         run: |
           git checkout main -- ./pkgdown/leaflet_maps
           git checkout gh-pages
-          git add .
-          git commit -m "Copied leaflep_maps from main to gh-pages"
-          git pull origin gh-pages
-          git push origin gh-pages
+          git add -A && git commit -m 'Copied leaflep_maps from main to gh-pages' || echo "No changes to commit"
+          git push origin gh-pages || echo "No changes to commit"
