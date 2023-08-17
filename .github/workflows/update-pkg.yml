@@ -48,7 +48,7 @@ jobs:
           https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/actions/workflows/update_readme.yml/dispatches \
           -d '{"ref": "main"}'
 
-      - name: Install package
+      - name: Install pkg
         run: R CMD INSTALL .
 
       - name: Create leaflet maps
@@ -70,5 +70,5 @@ jobs:
         run: |
           git checkout main -- ./pkgdown/leaflet_maps
           git checkout gh-pages
-          git add -u
+          git add .
           git commit -m "Copied leaflep_maps from main to gh-pages"
