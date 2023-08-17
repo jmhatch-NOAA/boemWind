@@ -72,3 +72,4 @@ jobs:
           git checkout gh-pages
           git add .
           git commit -m "Copied leaflep_maps from main to gh-pages"
+          git push gh-pages
