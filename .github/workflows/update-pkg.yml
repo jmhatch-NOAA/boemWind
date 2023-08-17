@@ -71,4 +71,4 @@ jobs:
           git checkout main -- ./pkgdown/leaflet_maps
           git checkout gh-pages
           git add -A && git commit -m 'Copied leaflep_maps from main to gh-pages' || echo "No changes to commit"
-          git push origin gh-pages || echo "No changes to commit"
+          git push -ff origin gh-pages || echo "No changes to commit"
