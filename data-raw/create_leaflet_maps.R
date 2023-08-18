@@ -43,7 +43,8 @@ bbox_active <- active |>
 leaflet_active <- leaflet::leaflet() |>
   leaflet::addTiles(urlTemplate = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png") |>
   leaflet::fitBounds(lng1 = bbox_active[1], lat1 = bbox_active[2], lng2 = bbox_active[3], lat2 = bbox_active[4]) |>
-  leaflet::addPolygons(data = active, popup = ~PROJECT_NAME_1)
+  leaflet::addPolygons(data = active, popup = ~PROJECT_NAME_1) %>%
+  leaflet::addEasyButton(leaflet::easyButton(icon = 'fa-home', onClick = leaflet::JS("function(btn, map){ window.location.href = 'https://jmhatch-noaa.github.io/boemWind/'; }")))
 
 # save
 htmlwidgets::saveWidget(leaflet_active, file = here::here('leaflet_maps', 'active_weas.html'), title = 'Active WEAs • boemWind')
@@ -75,7 +76,8 @@ bbox_planning <- planning |>
 leaflet_planning <- leaflet::leaflet() |>
   leaflet::addTiles(urlTemplate = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png") |>
   leaflet::fitBounds(lng1 = bbox_planning[1], lat1 = bbox_planning[2], lng2 = bbox_planning[3], lat2 = bbox_planning[4]) |>
-  leaflet::addPolygons(data = planning, popup = ~ADDITIONAL_INFORMATION)
+  leaflet::addPolygons(data = planning, popup = ~ADDITIONAL_INFORMATION) %>%
+  leaflet::addEasyButton(leaflet::easyButton(icon = 'fa-home', onClick = leaflet::JS("function(btn, map){ window.location.href = 'https://jmhatch-noaa.github.io/boemWind/'; }")))
 
 # save
 htmlwidgets::saveWidget(leaflet_planning, file = here::here('leaflet_maps', 'planning_weas.html'), title = 'Planning WEAs • boemWind')
