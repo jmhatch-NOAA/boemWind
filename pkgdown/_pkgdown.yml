@@ -29,12 +29,12 @@ navbar:
     active:
       text: Active WEAs
       icon: fa-map fa-lg
-      href: leaflet_maps/active_weas.html
+      href: pkgdown/leaflet_maps/active_weas.html
 
     planning:
       text: Planning WEAs
       icon: far fa-map fa-lg
-      href: leaflet_maps/planning_weas.html
+      href: pkgdown/leaflet_maps/planning_weas.html
 
     github:
       icon: fa-github fa-lg
