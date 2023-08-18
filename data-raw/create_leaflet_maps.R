@@ -2,11 +2,11 @@
 library(boemWind)
 
 # delete leaflet maps
-leaflet_maps <- here::here('pkgdown/leaflet_maps') |>
+leaflet_maps <- here::here('leaflet_maps') |>
   unlink(recursive = TRUE, force = TRUE)
 
-# create pkgdown/leaflet_maps
-if (!file.exists(here::here('pkgdown', 'leaflet_maps'))) dir.create(here::here('pkgdown', 'leaflet_maps'))
+# create leaflet_maps
+if (!file.exists(here::here('leaflet_maps'))) dir.create(here::here('leaflet_maps'))
 
 # list of exported data objects
 exp_data <- ls("package:boemWind")
@@ -46,10 +46,10 @@ leaflet_active <- leaflet::leaflet() |>
   leaflet::addPolygons(data = active, popup = ~PROJECT_NAME_1)
 
 # save
-htmlwidgets::saveWidget(leaflet_active, file = here::here('pkgdown', 'leaflet_maps', 'active_weas.html'), title = 'Active WEAs • boemWind')
+htmlwidgets::saveWidget(leaflet_active, file = here::here('leaflet_maps', 'active_weas.html'), title = 'Active WEAs • boemWind')
 
 # add favicon headers
-active_html <- here::here('pkgdown', 'leaflet_maps', 'active_weas.html') |>
+active_html <- here::here('leaflet_maps', 'active_weas.html') |>
   readLines()
 active_out <- c(active_html[1:5],
                 '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
@@ -59,7 +59,7 @@ active_out <- c(active_html[1:5],
                 '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
                 '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
                 active_html[6:length(active_html)])
-writeLines(active_out, here::here('pkgdown', 'leaflet_maps', 'active_weas.html'))
+writeLines(active_out, here::here('leaflet_maps', 'active_weas.html'))
 
 # Planning WEAs
 planning <- sf_data |>
@@ -78,10 +78,10 @@ leaflet_planning <- leaflet::leaflet() |>
   leaflet::addPolygons(data = planning, popup = ~ADDITIONAL_INFORMATION)
 
 # save
-htmlwidgets::saveWidget(leaflet_planning, file = here::here('pkgdown', 'leaflet_maps', 'planning_weas.html'), title = 'Planning WEAs • boemWind')
+htmlwidgets::saveWidget(leaflet_planning, file = here::here('leaflet_maps', 'planning_weas.html'), title = 'Planning WEAs • boemWind')
 
 # add favicon headers
-planning_html <- here::here('pkgdown', 'leaflet_maps', 'planning_weas.html') |>
+planning_html <- here::here('leaflet_maps', 'planning_weas.html') |>
   readLines()
 planning_out <- c(planning_html[1:5],
                   '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
@@ -91,12 +91,4 @@ planning_out <- c(planning_html[1:5],
                   '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
                   '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
                   planning_html[6:length(planning_html)])
-writeLines(planning_out, here::here('pkgdown', 'leaflet_maps', 'planning_weas.html'))
-
-# create maps folder in docs
-# if (!file.exists(here::here('docs', 'maps'))) dir.create(here::here('docs', 'maps'))
-
-# copy html files to maps
-# from <- here::here('pkgdown', 'leaflet_maps') |>
-#   list.files(full.names = TRUE)
-# file.copy(from, here::here('docs', 'maps'), recursive = TRUE)
+writeLines(planning_out, here::here('leaflet_maps', 'planning_weas.html'))
