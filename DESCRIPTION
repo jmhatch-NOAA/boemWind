@@ -1,5 +1,5 @@
 Package: boemWind
-Title: Download BOEM Wind Energy Areas (WEAs) 
+Title: BOEM Wind Energy Areas (WEAs) for R
 Version: 0.0.1
 Authors@R: 
     person(given = 'Joshua',
