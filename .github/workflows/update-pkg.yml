@@ -66,13 +66,14 @@ jobs:
           files=$(find $SRC_FOLDER_PATH -type f) # get the file list
           git fetch                         # fetch branches
           git checkout $TARGET_BRANCH       # checkout to your branch
-          git checkout ${GITHUB_REF##*/} -- $files # copy files from the source branch
+          git checkout ${GITHUB_REF##*/} -- $files  # copy files from the source branch
           git add $files
           git diff-index --quiet HEAD || git commit -am "No changes to commit"  # commit to the repository (ignore if no modification)
-          git push origin $TARGET_BRANCH # push to remote branch
-          git checkout ${GITHUB_REF##*/}
-          git rm $files
-          git push origin
+          git push origin $TARGET_BRANCH    # push to remote branch
+          git checkout ${GITHUB_REF##*/}    # checkout the source branch
+          git rm $files                     # delete files
+          git diff-index --quiet HEAD || git commit -am "No changes to commit"  # commit to the repository (ignore if no modification)
+          git push origin                   # push to remote branch
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
