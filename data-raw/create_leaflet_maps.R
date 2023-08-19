@@ -32,7 +32,8 @@ if (sf::st_crs(sf_data) != sf::st_crs(4326)) {
 # Active WEAs
 active <- sf_data |>
   dplyr::filter(LEASE_STAGE == 'Active') |>
-  dplyr::filter(STATE != 'CA')
+  dplyr::filter(STATE != 'CA') |>
+  dplyr::mutate(PROJECT_NAME_1 = dplyr::if_else(is.na(PROJECT_NAME_1), LEASE_NUMBER_COMPANY, PROJECT_NAME_1))
 
 # bounding box
 bbox_active <- active |>
