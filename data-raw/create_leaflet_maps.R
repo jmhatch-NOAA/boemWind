@@ -57,7 +57,7 @@ htmlwidgets::saveWidget(leaflet_weas, file = here::here('leaflet_maps', 'boem_we
 # add favicon headers
 wea_html <- here::here('leaflet_maps', 'boem_weas.html') |>
   readLines()
-wea_out <- c(weae_html[1:5],
+wea_out <- c(wea_html[1:5],
              '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
              '<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">',
              '<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">',
