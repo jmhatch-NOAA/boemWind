@@ -27,14 +27,9 @@ navbar:
       href: https://github.com/jmhatch-NOAA/boemWind/issues
 
     active:
-      text: Active WEAs
+      text: WEAs
       icon: fa-map fa-lg
-      href: leaflet_maps/active_weas.html
-
-    planning:
-      text: Planning WEAs
-      icon: far fa-map fa-lg
-      href: leaflet_maps/planning_weas.html
+      href: leaflet_maps/boem_weas.html
 
     github:
       icon: fa-github fa-lg
