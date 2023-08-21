@@ -31,13 +31,13 @@ if (sf::st_crs(sf_data) != sf::st_crs(4326)) {
 
 # combine
 weas <- sf_data |>
-  dplyr::filter((LEASE_STAGE == 'Active' & STATE != 'CA') | (LEASE_STAGE == 'Planning' & !CATEGORY1 %in% c('California Call Area', 'Hawaii Call Area', 'Oregon Call Area', 'Final Sale Notice'))) |>
+  # dplyr::filter((LEASE_STAGE == 'Active' & STATE != 'CA') | (LEASE_STAGE == 'Planning' & !CATEGORY1 %in% c('California Call Area', 'Hawaii Call Area', 'Oregon Call Area', 'Final Sale Notice'))) |>
   dplyr::mutate(PROJECT_NAME_1 = dplyr::if_else(is.na(PROJECT_NAME_1), LEASE_NUMBER_COMPANY, PROJECT_NAME_1)) |>
   dplyr::mutate(POPUP = ifelse(is.na(PROJECT_NAME_1), ADDITIONAL_INFORMATION, PROJECT_NAME_1))
 
 # bounding box
 bbox_weas <- weas |>
-  dplyr::filter(LEASE_STAGE == 'Active') |>
+  dplyr::filter(LEASE_STAGE == 'Active' & STATE != 'CA') |>
   sf::st_bbox() |>
   as.vector()
 
@@ -55,14 +55,14 @@ leaflet_weas <- leaflet::leaflet() |>
 htmlwidgets::saveWidget(leaflet_weas, file = here::here('leaflet_maps', 'boem_weas.html'), title = 'WEAs • boemWind')
 
 # add favicon headers
-active_html <- here::here('leaflet_maps', 'boem_weas.html') |>
+wea_html <- here::here('leaflet_maps', 'boem_weas.html') |>
   readLines()
-active_out <- c(active_html[1:5],
-                '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
-                '<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">',
-                '<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">',
-                '<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">',
-                '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
-                '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
-                active_html[6:length(active_html)])
-writeLines(active_out, here::here('leaflet_maps', 'boem_weas.html'))
+wea_out <- c(weae_html[1:5],
+             '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
+             '<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">',
+             '<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">',
+             '<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">',
+             '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
+             '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
+             wea_html[6:length(wea_html)])
+writeLines(wea_out, here::here('leaflet_maps', 'boem_weas.html'))
