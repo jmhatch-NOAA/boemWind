@@ -43,10 +43,10 @@ bbox_weas <- weas |>
 
 # leaflet map
 leaflet_weas <- leaflet::leaflet() |>
-  leaflet::addTiles(urlTemplate = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png") |>
+  leaflet::addTiles(urlTemplate = "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC") |>
   leaflet::fitBounds(lng1 = bbox_weas[1], lat1 = bbox_weas[2], lng2 = bbox_weas[3], lat2 = bbox_weas[4]) |>
-  leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Active'), group = 'Acive WEAs', popup = ~POPUP, color = '#0085CA') |>
-  leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Planning'), group = 'Planning WEAs', popup = ~POPUP, color = '#7171FF') |>
+  leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Active'), group = 'Active WEAs', popup = ~POPUP, color = '#FF4438') |>
+  leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Planning'), group = 'Planning WEAs', popup = ~POPUP, color = '#FF8300') |>
   leaflet::addEasyButton(leaflet::easyButton(icon = 'fa-home fa-lg', onClick = leaflet::JS("function(btn, map){ window.location.href = 'https://jmhatch-noaa.github.io/boemWind/'; }"))) |>
   leaflet::addLayersControl(overlayGroups = c('Active WEAs', 'Planning WEAs'), options = leaflet::layersControlOptions(collapsed = TRUE)) |>
   leaflet::hideGroup('Planning WEAs')
