@@ -12,6 +12,9 @@ shp_loc <- 'data-raw/usgs-uswtdb-shapefile'
 # function to download shapefile (shp)
 dnld_usgs_wtb <- function(shp_loc) {
 
+  # create shp_loc
+  if (!file.exists(here::here(shp_loc))) dir.create(here::here(shp_loc))
+
   # download shp
   httr::GET('https://eerscmap.usgs.gov/uswtdb/assets/data/uswtdbSHP.zip',
             httr::write_disk(here::here(paste0(shp_loc, '.zip')), overwrite = TRUE))
@@ -54,6 +57,9 @@ get_usgs_wtb <- function(shp_loc, save_clean = TRUE) {
   } else {
     return(usgs_offshore_wtbs)
   }
+
+  # remove dir
+  if (grepl(pattern = '/home/runner/work', x = here::here())) unlink(here::here(shp_loc), recursive = TRUE, force = TRUE)
 
 }
 
