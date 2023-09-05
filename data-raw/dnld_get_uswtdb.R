@@ -58,9 +58,6 @@ get_usgs_wtb <- function(shp_loc, save_clean = TRUE) {
     return(usgs_offshore_wtbs)
   }
 
-  # remove dir
-  if (grepl(pattern = '/home/runner/work', x = here::here())) unlink(here::here(shp_loc), recursive = TRUE, force = TRUE)
-
 }
 
 #' Update the R file documenting the offshore wind turbine locations and info from USGS.
@@ -86,6 +83,9 @@ update_wtbs_R <- function(shp_loc) {
   # version
   changelog <- here::here(shp_loc, 'CHANGELOG.txt') %>%
     readLines()
+
+  # remove dir
+  if (grepl(pattern = '/home/runner/work', x = here::here())) unlink(here::here(shp_loc), recursive = TRUE, force = TRUE)
 
   # paste string
   txt_file <- paste0("#' @title The United States Wind Turbine Database (USWTDB)
