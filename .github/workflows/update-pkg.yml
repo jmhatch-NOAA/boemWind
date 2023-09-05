@@ -27,8 +27,11 @@ jobs:
       - name: Install R pkgs
         run: Rscript -e 'install.packages(c("devtools", "dplyr", "here", "htmlwidgets", "httr", "jsonlite", "leaflet", "magrittr", "pkgdown", "sf", "stringr", "usethis"))'
 
-      - name: Update R pkg
+      - name: Update R pkg 1
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
+
+      - name: Update R pkg 2
+        run: Rscript -e 'here::here("data-raw/dnld_get_uswtdb.R") |> source()'
 
       - name: Install pkg
         run: R CMD INSTALL .
