@@ -12,6 +12,9 @@ gdb_loc <- 'data-raw/boem-renewable-energy-geodatabase'
 # function to download geodatabase (gdb)
 dnld_boem_weas <- function(gdb_loc) {
 
+  # create gdb_loc
+  if (!file.exists(here::here(gdb_loc))) dir.create(here::here(gdb_loc))
+
   # download gdb
   httr::GET('https://www.boem.gov/BOEM-Renewable-Energy-Geodatabase.zip',
             httr::write_disk(here::here(paste0(gdb_loc, '.zip')), overwrite = TRUE))
@@ -82,6 +85,9 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
   } else {
     return(boem_wea_outlines)
   }
+
+  # remove dir
+  if (grepl(pattern = '/home/runner/work', x = here::here())) unlink(here::here(gdb_loc), recursive = TRUE, force = TRUE)
 
 }
 

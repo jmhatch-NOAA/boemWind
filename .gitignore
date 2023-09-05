@@ -7,3 +7,5 @@
 .git
 docs
 inst/temp
+data-raw/boem-renewable-energy-geodatabase
+data-raw/usgs_offshore_wtbs
