@@ -1,7 +1,7 @@
 #' @title The United States Wind Turbine Database (USWTDB)
 #' @details Version: 6.0.0 - 2023-5-31
 #'
-#' @description An \code{sf} object containing the locations for offshore wind turbines.
+#' @description An \code{sf} object containing the locations of offshore wind turbines.
 #'
 #' @format An \code{sf} collection with 7 features and 28 fields.
 #' \describe{

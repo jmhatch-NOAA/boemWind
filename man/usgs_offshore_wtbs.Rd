@@ -21,7 +21,7 @@ An \code{sf} collection with 7 features and 28 fields.
 data('usgs_offshore_wtbs')
 }
 \description{
-An \code{sf} object containing the locations for offshore wind turbines.
+An \code{sf} object containing the locations of offshore wind turbines.
 }
 \details{
 Version: 6.0.0 - 2023-5-31
