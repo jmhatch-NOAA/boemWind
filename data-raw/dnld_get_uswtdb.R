@@ -91,7 +91,7 @@ update_wtbs_R <- function(shp_loc) {
   txt_file <- paste0("#' @title The United States Wind Turbine Database (USWTDB)
 #' @details Version:", gsub(pattern = '#|\\[|\\]', replacement = '', x = changelog[2]),"
 #'
-#' @description An \\code{sf} object containing the locations for offshore wind turbines.
+#' @description An \\code{sf} object containing the locations of offshore wind turbines.
 #'
 #' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
