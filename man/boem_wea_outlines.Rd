@@ -5,7 +5,7 @@
 \alias{boem_wea_outlines}
 \title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
-An \code{sf} collection with 62 features and 27 fields.
+An \code{sf} collection with 64 features and 22 fields.
 \describe{
 \item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{XY}

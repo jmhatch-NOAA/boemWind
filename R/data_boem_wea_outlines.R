@@ -2,7 +2,7 @@
 #'
 #' @description An \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 #'
-#' @format An \code{sf} collection with 62 features and 27 fields.
+#' @format An \code{sf} collection with 64 features and 22 fields.
 #' \describe{
 #'   \item{Geometry type}{MULTIPOLYGON}
 #'   \item{Dimension}{XY}

@@ -39,8 +39,8 @@ sf_wind <- lapply(X = exp_data, FUN = function(X) {
 # combine WEAs
 weas <- sf_wind[[1]] |>
   # dplyr::filter((LEASE_STAGE == 'Active' & STATE != 'CA') | (LEASE_STAGE == 'Planning' & !CATEGORY1 %in% c('California Call Area', 'Hawaii Call Area', 'Oregon Call Area', 'Final Sale Notice'))) |>
-  dplyr::mutate(PROJECT_NAME_1 = dplyr::if_else(is.na(PROJECT_NAME_1), LEASE_NUMBER_COMPANY, PROJECT_NAME_1)) |>
-  dplyr::mutate(POPUP = ifelse(is.na(PROJECT_NAME_1), ADDITIONAL_INFORMATION, PROJECT_NAME_1))
+  # dplyr::mutate(PROJECT_NAME_1 = dplyr::if_else(is.na(PROJECT_NAME_1), LEASE_NUMBER_COMPANY, PROJECT_NAME_1)) |>
+  dplyr::mutate(POPUP = ifelse(is.na(LEASE_NUMBER_COMPANY), ADDITIONAL_INFORMATION, LEASE_NUMBER_COMPANY))
 
 # bounding box
 bbox_weas <- weas |>
