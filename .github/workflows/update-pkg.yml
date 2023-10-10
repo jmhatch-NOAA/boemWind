@@ -49,13 +49,13 @@ jobs:
           git add -A && git commit -m 'Downloaded BOEM WEAs' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
-      # - name: Trigger workflow
-      #   run: |
-      #     curl -X POST \
-      #     -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" \
-      #     -H "Accept: application/vnd.github.v3+json" \
-      #     https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/actions/workflows/update_readme.yml/dispatches \
-      #     -d '{"ref": "main"}'
+      - name: Trigger workflow
+        run: |
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/jmhatch-NOAA/READ-PSB-TE-WIND/actions/workflows/update_readme.yml/dispatches \
+          -d '{"ref": "main"}'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
