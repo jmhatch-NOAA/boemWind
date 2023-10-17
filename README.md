@@ -1,4 +1,4 @@
-# boemWind <a href=https://github.com/jmhatch-NOAA/boemWind><img src="man/figures/logo.png" align="right" height="200" /></a>
+# boemWind <a href=https://jmhatch-noaa.github.io/boemWind/><img src="man/figures/logo.png" align="right" height="200" /></a>
 
 [![gitleaks](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml) [![update-pkg](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml)
 
