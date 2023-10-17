@@ -1,4 +1,4 @@
-# boemWind  <img src="man/figures/logo.png" style="float:right; height:200px;" />
+# boemWind <img src="man/figures/logo.png" style="float:right; height:200px;" />
 
 [![gitleaks](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml) [![update-pkg](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml)
 
