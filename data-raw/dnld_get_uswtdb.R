@@ -48,8 +48,10 @@ get_usgs_wtb <- function(shp_loc, save_clean = TRUE) {
     sf::st_read()
 
   # filter for offshore (at least 6 MW capacity for offshore wind turbines)
+  # NOTE: this doesn't work any longer, as some on-land turbines have a 6 MW capacity
+  # As a hacky workaround, filtering by project name too
   usgs_offshore_wtbs <- wtb_shp %>%
-    dplyr::filter(t_cap >= 6000)
+    dplyr::filter(t_cap >= 6000 & !p_name %in% c('Deerfield II Wind project', 'Ranchland Wind Project'))
 
   # save or not
   if (save_clean) {
@@ -93,7 +95,7 @@ update_wtbs_R <- function(shp_loc) {
 #'
 #' @description An \\code{sf} object containing the locations of offshore wind turbines.
 #'
-#' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
+#' @format An \\code{sf} colle ction with ", n_features," features and ", n_fields," fields.
 #' \\describe{
 #'   \\item{Geometry type}{", sf::st_geometry_type(usgs_offshore_wtbs) %>% unique() %>% paste(collapse = ', '),"}
 #'   \\item{Dimension}{", ifelse(all(sf::st_dimension(usgs_offshore_wtbs) == 0), 'XY', 'UNDET'),"}
@@ -114,6 +116,9 @@ NULL")
 
 }
 
+# delete all files in shp_loc
+list.files(shp_loc, full.names = TRUE) |> file.remove()
+
 # download
 dnld_usgs_wtb(shp_loc = shp_loc)
 
@@ -125,3 +130,8 @@ update_wtbs_R(shp_loc = shp_loc)
 
 # re-build documentation
 devtools::document()
+
+# take a peak
+leaflet::leaflet() |>
+  leaflet::addTiles() |>
+  leaflet::addMarkers(data = boemWind::usgs_offshore_wtbs |> sf::st_transform(4326))
