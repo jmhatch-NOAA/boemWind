@@ -3,7 +3,7 @@
 #'
 #' @description An \code{sf} object containing the locations of offshore wind turbines.
 #'
-#' @format An \code{sf} colle ction with 7 features and 28 fields.
+#' @format An \code{sf} collection with 7 features and 28 fields.
 #' \describe{
 #'   \item{Geometry type}{POINT}
 #'   \item{Dimension}{XY}

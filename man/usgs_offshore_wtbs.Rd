@@ -5,7 +5,7 @@
 \alias{usgs_offshore_wtbs}
 \title{The United States Wind Turbine Database (USWTDB)}
 \format{
-An \code{sf} colle ction with 7 features and 28 fields.
+An \code{sf} collection with 7 features and 28 fields.
 \describe{
 \item{Geometry type}{POINT}
 \item{Dimension}{XY}
