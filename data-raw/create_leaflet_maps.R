@@ -73,17 +73,17 @@ leaflet_weas <- leaflet::leaflet() |>
   leaflet::hideGroup(c('Planning WEAs', 'Wind Turbines'))
 
 # save
-htmlwidgets::saveWidget(leaflet_weas, file = here::here('leaflet_maps', 'boem_weas.html'), title = 'WEAs • boemWind')
+htmlwidgets::saveWidget(widget = leaflet_weas, file = here::here('leaflet_maps', 'boem_weas.html'), title = 'WEAs • boemWind')
 
 # add favicon headers
-wea_html <- here::here('leaflet_maps', 'boem_weas.html') |>
-  readLines()
-wea_out <- c(wea_html[1:5],
-             '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
-             '<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">',
-             '<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">',
-             '<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">',
-             '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
-             '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
-             wea_html[6:length(wea_html)])
-writeLines(wea_out, here::here('leaflet_maps', 'boem_weas.html'))
+# wea_html <- here::here('leaflet_maps', 'boem_weas.html') |>
+#   readLines()
+# wea_out <- c(wea_html[1:5],
+#              '<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">',
+#              '<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">',
+#              '<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">',
+#              '<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">',
+#              '<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">',
+#              '<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">',
+#              wea_html[6:length(wea_html)])
+# writeLines(wea_out, here::here('leaflet_maps', 'boem_weas.html'))
