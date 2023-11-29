@@ -95,7 +95,7 @@ update_wtbs_R <- function(shp_loc) {
 #'
 #' @description An \\code{sf} object containing the locations of offshore wind turbines.
 #'
-#' @format An \\code{sf} colle ction with ", n_features," features and ", n_fields," fields.
+#' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
 #'   \\item{Geometry type}{", sf::st_geometry_type(usgs_offshore_wtbs) %>% unique() %>% paste(collapse = ', '),"}
 #'   \\item{Dimension}{", ifelse(all(sf::st_dimension(usgs_offshore_wtbs) == 0), 'XY', 'UNDET'),"}
