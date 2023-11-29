@@ -83,10 +83,10 @@ jobs:
           git diff-index --quiet HEAD || git commit -am "No changes to commit"  # commit to the repository (ignore if no modification)
           git push origin                   # push to remote branch
 
-      # - name: Deploy to GitHub pages 🚀
-      #   if: github.event_name != 'pull_request'
-      #   uses: JamesIves/github-pages-deploy-action@v4.4.1
-      #   with:
-      #     clean: false
-      #     branch: gh-pages
-      #     folder: docs
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs
