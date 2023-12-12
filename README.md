@@ -2,7 +2,7 @@
 
 [![gitleaks](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml) [![update-pkg](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml)
 
-A repository of BOEM Wind Energy Areas (WEAs) in simple features [`sf`](https://r-spatial.github.io/sf/) format stored in an *.rda file for use with [`R`](https://www.r-project.org/).
+A repository of BOEM Wind Energy Areas (WEAs) in simple features [`sf`](https://r-spatial.github.io/sf/) format stored in an *.rda file for use with [`R`](https://www.r-project.org/). Also includes locations of offshore turbines from the [USGS US Wind Turbine Database](https://eerscmap.usgs.gov/uswtdb/).
 
 ### Installation
 
