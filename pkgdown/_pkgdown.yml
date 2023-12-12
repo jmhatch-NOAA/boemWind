@@ -36,7 +36,7 @@ navbar:
       href: https://github.com/jmhatch-NOAA/boemWind
 
 reference:
-- title: Data sets included:
+- title: 'Data sets included:'
 - contents:
   - boem_wea_outlines
   - usgs_offshore_wtbs
