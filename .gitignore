@@ -6,6 +6,7 @@
 .Rhistory
 .git
 docs
+leaflet_maps
 inst/temp
 data-raw/boem-renewable-energy-geodatabase
 data-raw/usgs_offshore_wtbs
