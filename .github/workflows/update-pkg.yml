@@ -71,9 +71,9 @@ jobs:
           files=$(find $SRC_FOLDER_PATH -type f) # get the file list
           git fetch                         # fetch branches
           git checkout $TARGET_BRANCH       # checkout to your branch
-          git rm -r $SRC_FOLDER_PATH        # delete leaflet_maps folder (added)
-          git commit . -m "Deleting folder" # commit to the repository (added)
-          git push origin $TARGET_BRANCH    # push to remote branch (added)
+          #git rm -r $SRC_FOLDER_PATH        # delete leaflet_maps folder (added)
+          #git commit . -m "Deleting folder" # commit to the repository (added)
+          #git push origin $TARGET_BRANCH    # push to remote branch (added)
           git checkout ${GITHUB_REF##*/} -- $files  # copy files from the source branch
           git add $files
           git diff-index --quiet HEAD || git commit -am "No changes to commit"  # commit to the repository (ignore if no modification)
