@@ -1,7 +1,6 @@
 name: gh-pages
 
 on:
-  workflow_dispatch:
   push:
     branches: [main, master]
   pull_request:
@@ -27,14 +26,11 @@ jobs:
 
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("devtools", "dplyr", "here", "httr", "jsonlite", "leaflet", "magrittr", "pkgdown", "sf", "stringr", "usethis"))'
+          Rscript -e 'install.packages(c("devtools", "dplyr", "glue", "here", "httr", "leaflet", "pkgdown", "sf", "usethis"))'
           Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2", repos = "http://cran.us.r-project.org")'
 
-      - name: Update R pkg 1
+      - name: Update R pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
-
-      - name: Update R pkg 2
-        run: Rscript -e 'here::here("data-raw/dnld_get_uswtdb.R") |> source()'
 
       - name: Install pkg
         run: R CMD INSTALL .

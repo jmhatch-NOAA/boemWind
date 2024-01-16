@@ -1,35 +1,46 @@
-#' Download boundaries of renewable energy lease areas, wind planning areas, and marine hydrokinetic planning areas from BOEM.
+#' Download boundaries of renewable energy lease areas and wind planning areas from BOEM using their ArcGIS server.
 #'
-#' @param gdb_loc File path for the BOEM geodatabase.
+#' @param type A character indicating the type of outline polygons to download. \code{active} for Wind Lease Boundaries and \code{planning} for Wind Planning Area Boundaries.
 #'
-# needed R libraries
-library(dplyr)
-library(magrittr)
+query_boem <- function(type) {
 
-# location to save / access the gdb
-gdb_loc <- 'data-raw/boem-renewable-energy-geodatabase'
+  # active leases or planning areas?
+  if (type == "active") {
+    base_url <- "https://services7.arcgis.com/G5Ma95RzqJRPKsWL/arcgis/rest/services/Wind_Lease_Boundaries__BOEM_/FeatureServer"
+  } else if (type == "planning") {
+    base_url <- "https://services7.arcgis.com/G5Ma95RzqJRPKsWL/arcgis/rest/services/Wind_Planning_Area_Boundaries__BOEM_/FeatureServer"
+  } else {
+    stop(glue::glue("Sorry, but type = \'{ type }\' isn't yet supported."))
+  }
 
-# function to download geodatabase (gdb)
-dnld_boem_weas <- function(gdb_loc) {
+  # grab meta data
+  meta <- base_url |>
+    httr::GET(query = list(f = "json")) |>
+    httr::stop_for_status(task = glue::glue("Grabbing metadata from:\n { base_url }")) |>
+    httr::content(simplifyVector = TRUE)
 
-  # create gdb_loc
-  if (!file.exists(here::here(gdb_loc))) dir.create(here::here(gdb_loc))
+  # should only be 1 layer
+  stopifnot(nrow(meta) == 1)
 
-  # download gdb
-  httr::GET('https://www.boem.gov/BOEM-Renewable-Energy-Geodatabase.zip',
-            httr::write_disk(here::here(paste0(gdb_loc, '.zip')), overwrite = TRUE))
+  # query parameters
+  query <- list(
+    where = "1=1",
+    outFields = "*",
+    f = "geoJSON"
+  )
 
-  # unzip
-  here::here(paste0(gdb_loc, '.zip')) %>% unzip(., exdir = here::here(gdb_loc))
+  # download outline polygons
+  outline_polys <- httr::POST(url = file.path(base_url, meta$layers$id, "query"), body = query) |>
+    httr::content(as = "text", encoding = "UTF-8") |>
+    sf::read_sf()
 
-  # delete zip folder
-  file.remove(here::here(paste0(gdb_loc, '.zip')))
+  # output
+  return(list(metadata = meta, data = outline_polys))
 
 }
 
-#' Extract renewable energy lease areas and wind planning areas from BOEM geodatabase and save as an rda file.
+#' Extract renewable energy lease areas or wind planning areas from BOEM ArcGIS server and save as an rda file.
 #'
-#' @param gdb_loc File path for the BOEM geodatabase.
 #' @param save_clean Boolean. TRUE / FALSE to save data as an rda file or return \code{sf} object.
 #'
 #' @return A \code{sf} object if \code{save_clean = FALSE}, otherwise \code{NULL}.
@@ -37,28 +48,19 @@ dnld_boem_weas <- function(gdb_loc) {
 sf::sf_use_s2(FALSE) # turn off s2 processing
 
 # function to extract WEAs
-get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
-
-  # list layers in gdb
-  list_layers <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>% sf::st_layers()
-
-  # grab layer names
-  active_name <- list_layers$name[stringr::str_detect(list_layers$name, 'Wind_Lease_Outlines')]
-  planning_name <- list_layers$name[stringr::str_detect(list_layers$name, 'Wind_Planning_Area_Outlines')]
-
-  # extract dates
-  # active_date <- paste(stringr::str_split(active_name, pattern = '_')[[1]][4:6], collapse = '/') %>%
-  #   as.Date(format = '%m/%d/%y')
-  # planning_date <- paste(stringr::str_split(planning_name, pattern = '_')[[1]][5:7], collapse = '/') %>%
-  #   as.Date(format = '%b/%d/%Y')
+get_boem_weas <- function(save_clean = TRUE) {
 
   # read in feature layers
-  active_shapes <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>%
-    sf::st_read(layer = active_name) %>%
-    dplyr::mutate(LEASE_STAGE = 'Active')
-  planning_shapes <- here::here(paste0(gdb_loc, '/BOEMWindLayers_4Download.gdb')) %>%
-    sf::st_read(layer = planning_name) %>%
-    dplyr::mutate(LEASE_STAGE = 'Planning')
+  active_leases <- query_boem(type = "active")
+  planning_areas <- query_boem(type = "planning")
+
+  # shapes
+  active_shapes <- active_leases |>
+    purrr::pluck('data') |>
+    dplyr::mutate(LEASE_STAGE = 'Active', VERSION = active_leases$metadata$currentVersion)
+  planning_shapes <-planning_areas |>
+    purrr::pluck('data') |>
+    dplyr::mutate(LEASE_STAGE = 'Planning', VERSION = planning_areas$metadata$currentVersion)
 
   # figure out which columns are in one and not the other
   cols_not_planning = colnames(active_shapes)[!colnames(active_shapes) %in% colnames(planning_shapes)]
@@ -86,12 +88,9 @@ get_boem_weas <- function(gdb_loc, save_clean = TRUE) {
     return(boem_wea_outlines)
   }
 
-  # remove dir
-  if (grepl(pattern = '/home/runner/work', x = here::here())) unlink(here::here(gdb_loc), recursive = TRUE, force = TRUE)
-
 }
 
-#' Update the R file documenting the renewable energy lease areas and wind planning areas from BOEM.
+#' Update the R file documenting the renewable energy lease areas and wind planning areas from BOEM ArcGIS server.
 #'
 #' @return NULL
 #'
@@ -108,13 +107,8 @@ update_weas_R <- function() {
   x_max <- round(bbox['xmax'], 4)
   y_min <- round(bbox['ymin'], 4)
   y_max <- round(bbox['ymax'], 4)
-  # active_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Active') %>% dplyr::pull(UPDATED) %>% unique()
-  # planning_update <- boem_wea_outlines %>% dplyr::filter(LEASE_STAGE == 'Planning') %>% dplyr::pull(UPDATED) %>% unique()
-
-  # query ArcGIS REST service
-  # url = 'https://services1.arcgis.com/Hp6G80Pky0om7QvQ/ArcGIS/rest/services/BOEM_Wind_Planning_and_Lease_Areas/FeatureServer'
-  # active_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/0'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
-  # planning_layer_info <- jsonlite::fromJSON(httr::content(httr::POST(paste0(url, '/5'), query = list(f = "json"), encode = "form", config = httr::config(ssl_verifypeer = FALSE)), as = "text"))
+  active_version <- unique(boem_wea_outlines$VERSION[boem_wea_outlines$LEASE_STAGE == 'Active'])
+  planning_version <- unique(boem_wea_outlines$VERSION[boem_wea_outlines$LEASE_STAGE == 'Planning'])
 
   # paste string
   txt_file <- paste0("#' @title BOEM Renewable Energy Lease Areas and Wind Planning Areas
@@ -123,12 +117,13 @@ update_weas_R <- function() {
 #'
 #' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
-#'   \\item{Geometry type}{", sf::st_geometry_type(boem_wea_outlines) %>% unique() %>% paste(collapse = ', '),"}
+#'   \\item{Geometry type}{", sf::st_geometry_type(boem_wea_outlines) |> unique() |> paste(collapse = ', '),"}
 #'   \\item{Dimension}{", ifelse(all(sf::st_dimension(boem_wea_outlines) == 2), 'XY', 'UNDET'),"}
 #'   \\item{Bounding box}{xmin: ", x_min," ymin: ", y_min," xmax: ", x_max," ymax: ", y_max,"}
 #'   \\item{Geodetic CRS}{", sf::st_crs(boem_wea_outlines)$input,"}
-#'   \\item{Source}{data-raw/boem-renewable-energy-geodatabase/BOEMWindLayers_4Download.gdb}
 #' }
+#'
+#' @details The Wind Lease Boundaries are from version ", active_version, " and the Wind Planning Area Boundaries are from version ", planning_version, ".
 #'
 #' @docType data
 #' @name boem_wea_outlines
@@ -142,11 +137,8 @@ NULL")
 
 }
 
-# download
-dnld_boem_weas(gdb_loc = gdb_loc)
-
-# extract
-get_boem_weas(gdb_loc = gdb_loc)
+# download & extract
+get_boem_weas()
 
 # update R
 update_weas_R()
