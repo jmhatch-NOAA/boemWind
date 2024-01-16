@@ -38,8 +38,6 @@ sf_wind <- lapply(X = exp_data, FUN = function(X) {
 
 # combine WEAs
 weas <- sf_wind[[1]] |>
-  # dplyr::filter((LEASE_STAGE == 'Active' & STATE != 'CA') | (LEASE_STAGE == 'Planning' & !CATEGORY1 %in% c('California Call Area', 'Hawaii Call Area', 'Oregon Call Area', 'Final Sale Notice'))) |>
-  # dplyr::mutate(PROJECT_NAME_1 = dplyr::if_else(is.na(PROJECT_NAME_1), LEASE_NUMBER_COMPANY, PROJECT_NAME_1)) |>
   dplyr::mutate(POPUP = ifelse(is.na(LEASE_NUMBER_COMPANY), ADDITIONAL_INFORMATION, LEASE_NUMBER_COMPANY))
 
 # bounding box
@@ -48,29 +46,15 @@ bbox_weas <- weas |>
   sf::st_bbox() |>
   as.vector()
 
-# wind turbine locations
-wtbs <- sf_wind[[2]] |>
-  dplyr::mutate(popup_label = paste0("Turbine ID: ", case_id, " <br>",
-                                     "Project Name: ", p_name, " <br>",
-                                     "Year Online:  ", p_year, " <br>",
-                                     "Rated Capacity: ", t_cap / 1000, " MW <br>",
-                                     "Hub Height: ", t_hh, " m <br>",
-                                     "Rotor Diameter: ", t_rd, " m <br>",
-                                     "Total Height: ", t_ttlh, " m <br>",
-                                     "Turbine Manufacturer: ", t_manu, " <br>",
-                                     "Turbine Model: ", t_model)
-                )
-
 # leaflet map
 leaflet_weas <- leaflet::leaflet() |>
   leaflet::addTiles(urlTemplate = "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", attribution = "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC") |>
   leaflet::fitBounds(lng1 = bbox_weas[1], lat1 = bbox_weas[2], lng2 = bbox_weas[3], lat2 = bbox_weas[4]) |>
   leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Active'), group = 'Active WEAs', popup = ~POPUP, color = '#FF4438') |>
   leaflet::addPolygons(data = weas |> dplyr::filter(LEASE_STAGE == 'Planning'), group = 'Planning WEAs', popup = ~POPUP, color = '#FF8300') |>
-  leaflet::addCircleMarkers(data = wtbs, group = 'Wind Turbines', popup = ~popup_label, radius = 5, stroke = FALSE, fillOpacity = 1.0, color = 'green') |>
   leaflet::addEasyButton(leaflet::easyButton(icon = 'fa-home fa-lg', onClick = leaflet::JS("function(btn, map){ window.location.href = 'https://jmhatch-noaa.github.io/boemWind/'; }"))) |>
-  leaflet::addLayersControl(overlayGroups = c('Active WEAs', 'Planning WEAs', 'Wind Turbines'), options = leaflet::layersControlOptions(collapsed = TRUE)) |>
-  leaflet::hideGroup(c('Planning WEAs', 'Wind Turbines'))
+  leaflet::addLayersControl(overlayGroups = c('Active WEAs', 'Planning WEAs'), options = leaflet::layersControlOptions(collapsed = TRUE)) |>
+  leaflet::hideGroup('Planning WEAs')
 
 # save
 htmlwidgets::saveWidget(widget = leaflet_weas, file = here::here('leaflet_maps', 'boem_weas.html'), title = 'WEAs • boemWind')
