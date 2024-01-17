@@ -1,4 +1,5 @@
 #' @title switch_url
+#'
 #' @description Based on \code{type}, provide the Direct Service Link to download GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
 #'
 #' @param type A character string for the type of GIS data that you would like to download.
@@ -53,8 +54,9 @@ switch_url <- function(type) {
 
 }
 
-#' @title query_boem
-#' @description Download GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+#' @title Download GIS data from BOEM's Renewable Energy Program
+#'
+#' @description Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
 #'
 #' @param type A character string for the type of GIS data that you would like to download.
 #' Can be:

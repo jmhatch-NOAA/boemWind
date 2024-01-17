@@ -2,7 +2,7 @@
 % Please edit documentation in R/boem_arcgis.R
 \name{query_boem}
 \alias{query_boem}
-\title{query_boem}
+\title{Download GIS data from BOEM's Renewable Energy Program}
 \usage{
 query_boem(type)
 }
@@ -27,5 +27,5 @@ Can be:
 A list with two named elements: 1) \code{meta} that stores metadata and 2) \code{data} that stores an \code{sf} data frame.
 }
 \description{
-Download GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
 }
