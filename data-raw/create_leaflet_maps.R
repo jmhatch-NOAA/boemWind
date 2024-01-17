@@ -9,7 +9,7 @@ leaflet_maps <- here::here('leaflet_maps') |>
 if (!file.exists(here::here('leaflet_maps'))) dir.create(here::here('leaflet_maps'))
 
 # list of exported data objects
-exp_data <- ls("package:boemWind")
+exp_data <- ls("package:boemWind")[1]
 
 # load data
 data(list = exp_data)
