@@ -39,3 +39,6 @@ reference:
 - title: 'Data sets included:'
 - contents:
   - boem_wea_outlines
+- title: 'Functions included:'
+- contents:
+  - query_boem
