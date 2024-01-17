@@ -1,44 +1,3 @@
-#' Download boundaries of renewable energy lease areas and wind planning areas from BOEM using their ArcGIS server.
-#'
-#' @param type A character indicating the type of outline polygons to download. \code{active} for Wind Lease Boundaries and \code{planning} for Wind Planning Area Boundaries.
-#'
-query_boem <- function(type) {
-
-  # active leases or planning areas?
-  if (type == "active") {
-    base_url <- "https://services7.arcgis.com/G5Ma95RzqJRPKsWL/arcgis/rest/services/Wind_Lease_Boundaries__BOEM_/FeatureServer"
-  } else if (type == "planning") {
-    base_url <- "https://services7.arcgis.com/G5Ma95RzqJRPKsWL/arcgis/rest/services/Wind_Planning_Area_Boundaries__BOEM_/FeatureServer"
-  } else {
-    stop(glue::glue("Sorry, but type = \'{ type }\' isn't yet supported."))
-  }
-
-  # grab meta data
-  meta <- base_url |>
-    httr::GET(query = list(f = "json")) |>
-    httr::stop_for_status(task = glue::glue("Grabbing metadata from:\n { base_url }")) |>
-    httr::content(simplifyVector = TRUE)
-
-  # should only be 1 layer
-  stopifnot(nrow(meta) == 1)
-
-  # query parameters
-  query <- list(
-    where = "1=1",
-    outFields = "*",
-    f = "geoJSON"
-  )
-
-  # download outline polygons
-  outline_polys <- httr::POST(url = file.path(base_url, meta$layers$id, "query"), body = query) |>
-    httr::content(as = "text", encoding = "UTF-8") |>
-    sf::read_sf()
-
-  # output
-  return(list(metadata = meta, data = outline_polys))
-
-}
-
 #' Extract renewable energy lease areas or wind planning areas from BOEM ArcGIS server and save as an rda file.
 #'
 #' @param save_clean Boolean. TRUE / FALSE to save data as an rda file or return \code{sf} object.
@@ -46,13 +5,14 @@ query_boem <- function(type) {
 #' @return A \code{sf} object if \code{save_clean = FALSE}, otherwise \code{NULL}.
 #'
 sf::sf_use_s2(FALSE) # turn off s2 processing
+here::here('R', 'boem_arcgis.R') |> source(echo = FALSE) # load needed functions
 
 # function to extract WEAs
 get_boem_weas <- function(save_clean = TRUE) {
 
   # read in feature layers
-  active_leases <- query_boem(type = "active")
-  planning_areas <- query_boem(type = "planning")
+  active_leases <- query_boem(type = "active lease outlines")
+  planning_areas <- query_boem(type = "planning area outlines")
 
   # shapes
   active_shapes <- active_leases |>
