@@ -58,19 +58,7 @@ switch_url <- function(type) {
 #'
 #' @description Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
 #'
-#' @param type A character string for the type of GIS data that you would like to download.
-#' Can be:
-#' * \code{active lease outlines}
-#' * \code{planning area outlines}
-#' * \code{project phases}
-#' * \code{export cables}
-#' * \code{substations}
-#' * \code{turbine locations}
-#' * \code{cable interconnections}
-#' * \code{data collection devices}
-#' * \code{cable corridors}
-#' * \code{cable landings}
-#' * \code{interarray cables}
+#' @inheritParams switch_url
 #'
 #' @return A list with two named elements: 1) \code{meta} that stores metadata and 2) \code{data} that stores an \code{sf} data frame.
 #'
