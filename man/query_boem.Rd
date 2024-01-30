@@ -29,3 +29,13 @@ A list with two named elements: 1) \code{meta} that stores metadata and 2) \code
 \description{
 Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
 }
+\examples{
+# basic usage
+active_leases <- query_boem('active lease outlines') |>
+  purrr::pluck('data')
+
+# use stored data instead
+active_leases_v2 <- boem_wea_outlines |>
+  dplyr::filter(LEASE_STAGE == 'Active')
+
+}
