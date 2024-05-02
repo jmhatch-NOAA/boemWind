@@ -1,5 +1,6 @@
 # needed libraries
 library(boemWind)
+sf::sf_use_s2(FALSE) # turn off s2 processing
 
 # delete leaflet maps
 leaflet_maps <- here::here('leaflet_maps') |>
