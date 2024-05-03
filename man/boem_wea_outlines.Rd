@@ -7,7 +7,7 @@
 \format{
 An \code{sf} collection with 77 features and 30 fields.
 \describe{
-\item{Geometry type}{MULTIPOLYGON, POLYGON}
+\item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{NA}
 \item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -68.3654 ymax: 43.9597}
 \item{Geodetic CRS}{WGS 84}
