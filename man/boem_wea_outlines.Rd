@@ -5,11 +5,11 @@
 \alias{boem_wea_outlines}
 \title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
-An \code{sf} collection with 77 features and 30 fields.
+An \code{sf} collection with 73 features and 30 fields.
 \describe{
 \item{Geometry type}{MULTIPOLYGON}
 \item{Dimension}{NA}
-\item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -68.3654 ymax: 43.9597}
+\item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -68.3654 ymax: 43.9506}
 \item{Geodetic CRS}{WGS 84}
 }
 }
