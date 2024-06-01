@@ -27,7 +27,7 @@ jobs:
       - name: Install R pkgs
         run: |
           Rscript -e 'install.packages(c("devtools", "dplyr", "glue", "here", "httr", "leaflet", "pkgdown", "sf", "usethis"))'
-          Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2", repos = "http://cran.us.r-project.org")'
+          Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
 
       - name: Update R pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
