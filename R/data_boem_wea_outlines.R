@@ -2,11 +2,11 @@
 #'
 #' @description An \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 #'
-#' @format An \code{sf} collection with 69 features and 30 fields.
+#' @format An \code{sf} collection with 73 features and 30 fields.
 #' \describe{
 #'   \item{Geometry type}{MULTIPOLYGON}
-#'   \item{Dimension}{XY}
-#'   \item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -67.7171 ymax: 43.9597}
+#'   \item{Dimension}{NA}
+#'   \item{Bounding box}{xmin: -158.6636 ymin: 20.7765 xmax: -68.3654 ymax: 43.9506}
 #'   \item{Geodetic CRS}{WGS 84}
 #' }
 #'
