@@ -103,7 +103,7 @@ query_boem <- function(type) {
 
   # download GIS data
   sf_data <- httr::POST(url = file.path(base_url, meta$layers$id, "query"), body = query) |>
-    httr::content(as = "text", encoding = "UTF-8") |> # not sure this is needed...
+    httr::content(as = "text", encoding = "UTF-8") |> # not sure this is needed
     sf::read_sf()
 
   # output
