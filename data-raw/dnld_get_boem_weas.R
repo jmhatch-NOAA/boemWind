@@ -69,6 +69,7 @@ update_weas_R <- function() {
   y_max <- round(bbox['ymax'], 4)
   active_version <- unique(boem_wea_outlines$VERSION[boem_wea_outlines$LEASE_STAGE == 'Active'])
   planning_version <- unique(boem_wea_outlines$VERSION[boem_wea_outlines$LEASE_STAGE == 'Planning'])
+  dims <- sf::st_dimension(boem_wea_outlines)
 
   # paste string
   txt_file <- paste0("#' @title BOEM Renewable Energy Lease Areas and Wind Planning Areas
@@ -78,7 +79,7 @@ update_weas_R <- function() {
 #' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
 #'   \\item{Geometry type}{", sf::st_geometry_type(boem_wea_outlines) |> unique() |> paste(collapse = ', '),"}
-#'   \\item{Dimension}{", ifelse(all(sf::st_dimension(boem_wea_outlines) == 2), 'XY', 'UNDET'),"}
+#'   \\item{Dimension}{", ifelse(all(dims[!is.na(dims)] == 2), 'XY', 'UNDET'),"}
 #'   \\item{Bounding box}{xmin: ", x_min," ymin: ", y_min," xmax: ", x_max," ymax: ", y_max,"}
 #'   \\item{Geodetic CRS}{", sf::st_crs(boem_wea_outlines)$input,"}
 #' }

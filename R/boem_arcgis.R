@@ -78,10 +78,17 @@ query_boem <- function(type) {
   # grab url
   base_url <- switch_url(type)
 
-  # grab meta data
-  meta <- base_url |>
+  # grab feature meta data
+  feature_meta <- base_url |>
     httr::GET(query = list(f = "json")) |>
-    httr::stop_for_status(task = glue::glue("Grabbing metadata from:\n { base_url }")) |>
+    httr::stop_for_status(task = glue::glue("Grabbing metadata from:\n { _ }")) |>
+    httr::content(simplifyVector = TRUE)
+
+  # grab layer meta data
+  layer_meta <- base_url |>
+    file.path(feature_meta$layers$id) |>
+    httr::GET(query = list(f = "json")) |>
+    httr::stop_for_status(task = glue::glue("Grabbing metadata from:\n { _ }")) |>
     httr::content(simplifyVector = TRUE)
 
   # should only be 1 layer for now
@@ -96,10 +103,10 @@ query_boem <- function(type) {
 
   # download GIS data
   sf_data <- httr::POST(url = file.path(base_url, meta$layers$id, "query"), body = query) |>
-    httr::content(as = "text", encoding = "UTF-8") |>
+    httr::content(as = "text", encoding = "UTF-8") |> # not sure this is needed...
     sf::read_sf()
 
   # output
-  return(list(metadata = meta, data = sf_data))
+  return(list(metadata = layer_meta, data = sf_data))
 
 }
