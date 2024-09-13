@@ -92,7 +92,7 @@ query_boem <- function(type) {
     httr::content(simplifyVector = TRUE)
 
   # should only be 1 layer for now
-  stopifnot(nrow(meta) == 1)
+  stopifnot(nrow(feature_meta$layers) == 1)
 
   # query parameters
   query <- list(
@@ -102,7 +102,7 @@ query_boem <- function(type) {
   )
 
   # download GIS data
-  sf_data <- httr::POST(url = file.path(base_url, meta$layers$id, "query"), body = query) |>
+  sf_data <- httr::POST(url = file.path(base_url, feature_meta$layers$id, "query"), body = query) |>
     httr::content(as = "text", encoding = "UTF-8") |> # not sure this is needed
     sf::read_sf()
 
