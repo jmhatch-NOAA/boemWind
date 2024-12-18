@@ -28,9 +28,13 @@ jobs:
         run: |
           Rscript -e 'install.packages("Rcpp", repos = "https://RcppCore.github.io/drat")'
 
+      - name: Install devtools
+        run: |
+          Rscript -e 'install.packages("devtools")'
+
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("devtools", "dplyr", "glue", "here", "httr", "leaflet", "pkgdown", "sf", "usethis"))'
+          Rscript -e 'install.packages(c("dplyr", "glue", "here", "httr", "leaflet", "pkgdown", "sf", "usethis"))'
           Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
 
       - name: Update R pkg
