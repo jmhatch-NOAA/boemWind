@@ -21,12 +21,16 @@ jobs:
       - name: Install R pkg linux dependencies
         run: |
           sudo apt update
-          sudo apt-get install libcurl4-openssl-dev libnetcdf-dev libudunits2-dev libgdal-dev libharfbuzz-dev libfribidi-dev
+          sudo apt-get install libcurl4-openssl-dev libnetcdf-dev libudunits2-dev libgdal-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev
         shell: bash
 
       - name: Install Rcpp
         run: |
           Rscript -e 'install.packages("Rcpp", repos = "https://RcppCore.github.io/drat")'
+
+      - name: Install devtools dependencies
+        run: |
+          Rscript -e 'install.packages(c("systemfonts", "textshaping"))'
 
       - name: Install devtools
         run: |
@@ -38,7 +42,7 @@ jobs:
           Rscript -e 'install.packages(c("dplyr", "here", "leaflet", "sf"))'
           Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
 
-      - name: Update R pkg
+      - name: Update boemWind pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
 
       - name: Install pkg
