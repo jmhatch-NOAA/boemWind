@@ -34,7 +34,6 @@ jobs:
 
       - name: Install devtools
         run: |
-          Rscript -e 'install.packages(c("systemfonts", "textshaping"))'
           Rscript -e 'install.packages("devtools")'
 
       - name: Install R pkgs
