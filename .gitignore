@@ -7,3 +7,5 @@
 .git
 docs
 inst/temp
+var/
+data/boem_orep_gis_data_*
