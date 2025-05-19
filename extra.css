@@ -184,8 +184,8 @@ footer {
 }
 
 footer p {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 0px;
+  margin-right: 0px;
   text-align: Center;
   color: #00467f;
 }
