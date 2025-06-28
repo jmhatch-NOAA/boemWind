@@ -10,7 +10,7 @@
 #'   \item{Geodetic CRS}{WGS 84}
 #' }
 #'
-#' @details The Wind Lease Boundaries are from version 11.5 and the Wind Planning Area Boundaries are from version 11.5.
+#' @details The Wind Lease Boundaries are from version 11.2 and the Wind Planning Area Boundaries are from version 11.2.
 #'
 #' @docType data
 #' @name boem_wea_outlines
