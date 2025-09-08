@@ -23,6 +23,6 @@ data('boem_wea_outlines')
 An \code{sf} object containing the outlines for BOEM Renewable Energy Program Wind Lease (LEASE_STAGE = 'Active') and Planning Areas (LEASE_STAGE = 'Planning').
 }
 \details{
-The Wind Lease Boundaries are from version 11.2 and the Wind Planning Area Boundaries are from version 11.2.
+The Wind Lease Boundaries are from version 11.5 and the Wind Planning Area Boundaries are from version 11.5.
 }
 \keyword{datasets}
