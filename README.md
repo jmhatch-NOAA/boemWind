@@ -2,7 +2,7 @@
 
 [![gitleaks](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml) [![update-pkg](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml)
 
-A repository of BOEM Wind Energy Areas (WEAs) in simple features [`sf`](https://r-spatial.github.io/sf/) format stored in an *.rda file for use with [`R`](https://www.r-project.org/).
+A repository of BOEM Renewable Energy Program GIS data in simple features, [`sf`](https://r-spatial.github.io/sf/), format stored in an *.rda file for use with R.
 
 ### Installation
 
@@ -18,4 +18,4 @@ This repository is a scientific product and is not official communication of the
 
 <img src="https://raw.githubusercontent.com/nmfs-fish-tools/nmfspalette/main/man/figures/noaa-fisheries-rgb-2line-horizontal-small.png" width="185" alt="NOAA Fisheries">
 
-[U.S. Department of Commerce](https://www.commerce.gov/) | [National Oceanographic and Atmospheric Administration](https://www.noaa.gov) | [NOAA Fisheries](https://www.fisheries.noaa.gov/) | [NEFSC](https://www.fisheries.noaa.gov/about/northeast-fisheries-science-center)
+[U.S. Department of Commerce](https://www.commerce.gov/) | [NOAA](https://www.noaa.gov) | [NOAA Fisheries](https://www.fisheries.noaa.gov/) | [NEFSC](https://www.fisheries.noaa.gov/about/northeast-fisheries-science-center)

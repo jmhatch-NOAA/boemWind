@@ -1,39 +1,40 @@
 url: https://jmhatch-noaa.github.io/boemWind/
 
+home:
+  title: BOEM OREP GIS Data for R
+
+authors:
+  Joshua Hatch:
+    href: https://github.com/jmhatch-NOAA
+
+template:
+  bootstrap: 5
+  math-rendering: mathjax
+  light-switch: false
+  bslib:
+    primary: "#004391"
+    danger: "#0085CA"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+
+deploy:
+  install_metadata: true
+
 navbar:
+  bg: primary
   structure:
-    left:
-    - home
-    - reference
-    - issue
-    - active
-    - planning
-    right:
-    - github
-
+    left: [reference, issues, map]
+    right: [github, search]
   components:
-    home:
-      icon: fa-home fa-lg
-      href: index.html
-
     reference:
       text: Reference
-      icon: fa-file-code fa-lg
       href: reference/index.html
-
-    issue:
+    issues:
       text: Issues
-      icon: fa-question-circle fa-lg
       href: https://github.com/jmhatch-NOAA/boemWind/issues
-
-    active:
-      text: WEAs
-      icon: fa-map fa-lg
-      href: leaflet_maps/boem_weas.html
-
-    github:
-      icon: fa-github fa-lg
-      href: https://github.com/jmhatch-NOAA/boemWind
+    map:
+      text: Map
+      href: leaflet_maps/boem_areas.html
 
 reference:
 - title: 'Data sets included:'

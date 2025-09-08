@@ -1,6 +1,6 @@
-#' @title BOEM Renewable Energy Lease Areas and Wind Planning Areas
+#' @title BOEM Renewable Energy Program Wind Lease and Planning Areas
 #'
-#' @description An \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
+#' @description An \code{sf} object containing the outlines for BOEM Renewable Energy Program Wind Lease (LEASE_STAGE = 'Active') and Planning Areas (LEASE_STAGE = 'Planning').
 #'
 #' @format An \code{sf} collection with 71 features and 30 fields.
 #' \describe{

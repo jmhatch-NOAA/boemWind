@@ -1,12 +1,12 @@
 Package: boemWind
-Title: BOEM Wind Energy Areas (WEAs) for R
-Version: 0.0.2
+Title: BOEM Renewable Energy Program GIS data for R
+Version: 0.0.3
 Authors@R: 
     person(given = 'Joshua',
            family = 'Hatch',
            role = c('aut', 'cre'),
            email = 'joshua.hatch@noaa.gov')
-Description: Provide BOEM WEAs as sf objects stored in an *.rda file.
+Description: Provide BOEM Renewable Energy Program GIS data in sf objects stored in an *.rda file.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
