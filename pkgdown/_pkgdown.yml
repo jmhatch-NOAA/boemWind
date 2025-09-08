@@ -25,16 +25,24 @@ navbar:
   structure:
     left: [reference, issues, map]
     right: [search, github]
+
   components:
     reference:
+      icon: fa-book
       text: Reference
       href: reference/index.html
     issues:
+      icon: fa-circle-question
       text: Issues
       href: https://github.com/jmhatch-NOAA/boemWind/issues
     map:
+      icon: fa-location-dot
       text: Map
       href: leaflet_maps/boem_areas.html
+    github:
+      icon: fa-github fa-lg
+      aria-label: GitHub
+      href: https://github.com/jmhatch-NOAA/boemWind/
 
 reference:
 - title: 'Data sets included:'

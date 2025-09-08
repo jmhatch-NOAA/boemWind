@@ -6,12 +6,13 @@ Authors@R:
            family = 'Hatch',
            role = c('aut', 'cre'),
            email = 'joshua.hatch@noaa.gov')
+URL: https://jmhatch-noaa.github.io/boemWind/          
+BugReports: https://jmhatch-noaa.github.io/boemWind/issues           
 Description: Provide BOEM Renewable Energy Program GIS data in sf objects stored in an *.rda file.
 License: file LICENSE
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5),
     sf
@@ -25,4 +26,6 @@ Suggests:
     leaflet,
     purrr,
     usethis
-URL: https://jmhatch-noaa.github.io/boemWind/
+LazyData: true
+LazyDataCompression: bzip2
+VignetteBuilder: knitr
