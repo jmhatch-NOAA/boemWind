@@ -3,7 +3,7 @@
 \docType{data}
 \name{boem_wea_outlines}
 \alias{boem_wea_outlines}
-\title{BOEM Renewable Energy Program Wind Lease and Planning Areas}
+\title{BOEM Renewable Energy Lease Areas and Wind Planning Areas}
 \format{
 An \code{sf} collection with 71 features and 30 fields.
 \describe{
@@ -20,7 +20,7 @@ An \code{sf} collection with 71 features and 30 fields.
 data('boem_wea_outlines')
 }
 \description{
-An \code{sf} object containing the outlines for BOEM Renewable Energy Program Wind Lease (LEASE_STAGE = 'Active') and Planning Areas (LEASE_STAGE = 'Planning').
+An \code{sf} object containing the outlines for BOEM Renewable Energy Lease Areas (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
 }
 \details{
 The Wind Lease Boundaries are from version 11.5 and the Wind Planning Area Boundaries are from version 11.5.
