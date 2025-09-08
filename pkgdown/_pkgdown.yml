@@ -24,7 +24,7 @@ navbar:
   bg: primary
   structure:
     left: [reference, issues, map]
-    right: [github, search]
+    right: [search, github]
   components:
     reference:
       text: Reference
