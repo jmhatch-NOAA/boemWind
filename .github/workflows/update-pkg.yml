@@ -40,7 +40,7 @@ jobs:
 
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("dplyr", "here", "httr", "leaflet", "sf"))'
+          Rscript -e 'install.packages(c("dplyr", "here", "httr", "leaflet", "sf", "units"))'
           Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
 
       - name: Update boemWind pkg
