@@ -28,20 +28,20 @@ jobs:
 
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("dplyr", "here", "httr", "leaflet", "sf", "units"))'
+          Rscript -e 'install.packages(c("dplyr", "here", "htmlwidgets", "httr", "leaflet", "sf", "units"))'
 
-      - name: Install Rcpp
-        run: |
-          Rscript -e 'install.packages("Rcpp", repos = "https://RcppCore.github.io/drat")'
-
-      - name: Install devtools dependencies
-        run: |
-          Rscript -e 'install.packages(c("systemfonts", "textshaping"))'
-
-      - name: Install devtools and htmlwidgets
-        run: |
-          Rscript -e 'install.packages("devtools")'
-          Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
+      # - name: Install Rcpp
+      #   run: |
+      #     Rscript -e 'install.packages("Rcpp", repos = "https://RcppCore.github.io/drat")'
+      #
+      # - name: Install devtools dependencies
+      #   run: |
+      #     Rscript -e 'install.packages(c("systemfonts", "textshaping"))'
+      #
+      # - name: Install devtools and htmlwidgets
+      #   run: |
+      #     Rscript -e 'install.packages("devtools")'
+      #     Rscript -e 'devtools::install_version("htmlwidgets", version = "1.6.2")'
 
       - name: Update boemWind pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
