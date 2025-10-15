@@ -28,7 +28,7 @@ jobs:
 
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("dplyr", "here", "htmlwidgets", "httr", "leaflet", "sf", "units"))'
+          Rscript -e 'install.packages(c("dplyr", "here", "htmlwidgets", "httr", "leaflet", "purrr", "sf", "units"))'
 
       # - name: Install Rcpp
       #   run: |
