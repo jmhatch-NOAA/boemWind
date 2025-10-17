@@ -1,6 +1,6 @@
 #' @title switch_url
 #'
-#' @description Based on \code{type}, provide the Direct Service Link to download GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+#' @description Based on \code{type}, provide the Direct Service Link to download GIS data from BOEM's Office of Renewable Energy Program using their ArcGIS server.
 #'
 #' @param type A character string for the type of GIS data that you would like to download.
 #' Can be:
@@ -54,9 +54,9 @@ switch_url <- function(type) {
 
 }
 
-#' @title Download GIS data from BOEM's Renewable Energy Program
+#' @title Download GIS data from BOEM's Office of Renewable Energy Program
 #'
-#' @description Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+#' @description Query GIS data from BOEM's Office of Renewable Energy Program using their ArcGIS server.
 #'
 #' @inheritParams switch_url
 #'
@@ -68,7 +68,7 @@ switch_url <- function(type) {
 #'   purrr::pluck('data')
 #'
 #' # use stored data instead
-#' active_leases_v2 <- boem_wea_outlines |>
+#' active_leases_v2 <- boem_orep_outlines |>
 #'   dplyr::filter(LEASE_STAGE == 'Active')
 #'
 #' @export

@@ -3,7 +3,7 @@
 [![gitleaks](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/secretScan.yml) 
 [![update-pkg](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml/badge.svg)](https://github.com/jmhatch-NOAA/boemWind/actions/workflows/update-pkg.yml)
 
-A repository of BOEM Renewable Energy Program GIS data in simple features, [`sf`](https://r-spatial.github.io/sf/), format stored in an *.rda file for use with R.
+A repository of BOEM Office of Renewable Energy Program GIS data in simple features, [`sf`](https://r-spatial.github.io/sf/), format for use with R.
 
 ### Installation
 

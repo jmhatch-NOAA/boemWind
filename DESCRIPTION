@@ -1,6 +1,6 @@
 Package: boemWind
-Title: BOEM Renewable Energy Program GIS data for R
-Version: 0.0.3
+Title: BOEM Office of Renewable Energy Program GIS data for R
+Version: 0.0.4
 Authors@R: 
     person(given = 'Joshua',
            family = 'Hatch',
@@ -8,13 +8,13 @@ Authors@R:
            email = 'joshua.hatch@noaa.gov')
 URL: https://jmhatch-noaa.github.io/boemWind/          
 BugReports: https://jmhatch-noaa.github.io/boemWind/issues           
-Description: Provide BOEM Renewable Energy Program GIS data in sf objects stored in an *.rda file.
+Description: Provide BOEM Office of Renewable Energy Program GIS data in sf objects stored in *.rda files.
 License: file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Depends: 
-    R (>= 3.5),
+    R (>= 4.1.0),
     sf
 Suggests: 
     devtools,

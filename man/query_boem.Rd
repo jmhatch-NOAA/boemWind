@@ -2,7 +2,7 @@
 % Please edit documentation in R/boem_arcgis.R
 \name{query_boem}
 \alias{query_boem}
-\title{Download GIS data from BOEM's Renewable Energy Program}
+\title{Download GIS data from BOEM's Office of Renewable Energy Program}
 \usage{
 query_boem(type)
 }
@@ -27,7 +27,7 @@ Can be:
 A list with two named elements: 1) \code{meta} that stores metadata and 2) \code{data} that stores an \code{sf} data frame.
 }
 \description{
-Query GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+Query GIS data from BOEM's Office of Renewable Energy Program using their ArcGIS server.
 }
 \examples{
 # basic usage
@@ -35,7 +35,7 @@ active_leases <- query_boem('active lease outlines') |>
   purrr::pluck('data')
 
 # use stored data instead
-active_leases_v2 <- boem_wea_outlines |>
+active_leases_v2 <- boem_orep_outlines |>
   dplyr::filter(LEASE_STAGE == 'Active')
 
 }

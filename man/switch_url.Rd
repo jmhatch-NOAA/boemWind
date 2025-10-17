@@ -27,6 +27,6 @@ Can be:
 A url path.
 }
 \description{
-Based on \code{type}, provide the Direct Service Link to download GIS data from BOEM's Renewable Energy Program using their ArcGIS server.
+Based on \code{type}, provide the Direct Service Link to download GIS data from BOEM's Office of Renewable Energy Program using their ArcGIS server.
 }
 \keyword{internal}
