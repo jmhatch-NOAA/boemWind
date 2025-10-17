@@ -21,7 +21,7 @@ An \code{sf} collection with 71 features and 30 fields.
 data('boem_orep_outlines')
 }
 \description{
-An \code{sf} object containing the outlines for BOEM Renewable Energy Lease (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
+An \code{sf} object containing the outlines for BOEM Renewable Energy Lease (LEASE_STAGE = 'Active') and Wind Planning (LEASE_STAGE = 'Planning') Areas.
 }
 \details{
 The Lease Area Boundaries were updated on 2025-08-05 and the Wind Planning Area Boundaries were updated on 2025-08-05. The Wind Planning Areas were rescinded on July 30, 2025.
