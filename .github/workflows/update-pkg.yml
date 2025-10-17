@@ -31,7 +31,7 @@ jobs:
           Rscript -e 'install.packages(c("devtools", "dplyr", "here", "htmlwidgets", "httr", "leaflet", "purrr", "sf", "units", "usethis"))'
 
       - name: Update boemWind pkg
-        run: Rscript -e 'here::here("data-raw/dnld_get_boem_weas.R") |> source()'
+        run: Rscript -e 'here::here("data-raw/dnld_get_boem_outlines.R") |> source()'
 
       - name: Install pkg
         run: R CMD INSTALL .
