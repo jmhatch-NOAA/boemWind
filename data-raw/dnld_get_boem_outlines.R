@@ -74,7 +74,7 @@ update_outlines_R <- function() {
   # paste string
   txt_file <- paste0("#' @title BOEM Office of Renewable Energy Program Lease and Wind Planning Areas
 #'
-#' @description An \\code{sf} object containing the outlines for BOEM Renewable Energy Lease (LEASE_STAGE = 'Active') and Wind Planning Areas (LEASE_STAGE = 'Planning').
+#' @description An \\code{sf} object containing the outlines for BOEM Renewable Energy Lease (LEASE_STAGE = 'Active') and Wind Planning (LEASE_STAGE = 'Planning') Areas.
 #'
 #' @format An \\code{sf} collection with ", n_features," features and ", n_fields," fields.
 #' \\describe{
