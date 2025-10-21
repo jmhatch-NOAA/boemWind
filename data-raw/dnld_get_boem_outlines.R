@@ -67,8 +67,14 @@ update_outlines_R <- function() {
   x_max <- round(bbox['xmax'], 4)
   y_min <- round(bbox['ymin'], 4)
   y_max <- round(bbox['ymax'], 4)
-  active_version <- unique(boem_orep_outlines$EDIT[boem_orep_outlines$LEASE_STAGE == 'Active'] |> as.Date())
-  planning_version <- unique(boem_orep_outlines$EDIT[boem_orep_outlines$LEASE_STAGE == 'Planning'] |> as.Date())
+  active_version <- boem_orep_outlines$EDIT[boem_orep_outlines$LEASE_STAGE == 'Active'] |>
+    as.Date() |>
+    format('%B %d, %Y') |>
+    unique()
+  planning_version <- boem_orep_outlines$EDIT[boem_orep_outlines$LEASE_STAGE == 'Planning'] |>
+    as.Date() |>
+    format('%B %d, %Y') |>
+    unique()
   dims <- sf::st_dimension(boem_orep_outlines)
 
   # paste string
