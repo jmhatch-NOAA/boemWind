@@ -49,14 +49,6 @@ A list with two named elements: 1) `meta` that stores metadata and 2)
 # basic usage
 active_leases <- query_boem('active lease outlines') |>
   purrr::pluck('data')
-#> Error: Cannot open "<html>
-#> <head><title>504 Gateway Time-out</title></head>
-#> <body>
-#> <center><h1>504 Gateway Time-out</h1></center>
-#> <hr><center>Microsoft-Azure-Application-Gateway/v2</center>
-#> </body>
-#> </html>
-#> "; The file doesn't seem to exist.
 
 # use stored data instead
 active_leases_v2 <- boem_orep_outlines |>
