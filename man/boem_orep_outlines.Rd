@@ -24,6 +24,6 @@ data('boem_orep_outlines')
 An \code{sf} object containing the outlines for BOEM Renewable Energy Lease (LEASE_STAGE = 'Active') and Wind Planning (LEASE_STAGE = 'Planning') Areas.
 }
 \details{
-The Lease Area Boundaries were updated on 2025-08-05 and the Wind Planning Area Boundaries were updated on 2025-08-05. The Wind Planning Areas were rescinded on July 30, 2025.
+The Lease Area Boundaries were updated on August 05, 2025 and the Wind Planning Area Boundaries were updated on August 05, 2025. The Wind Planning Areas were rescinded on July 30, 2025.
 }
 \keyword{datasets}
