@@ -23,12 +23,12 @@ jobs:
       - name: Install R pkg linux dependencies
         run: |
           sudo apt update
-          sudo apt-get install libcurl4-openssl-dev libnetcdf-dev libudunits2-dev libgdal-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev
+          sudo apt-get install libfontconfig1-dev libfribidi-dev libcurl4-openssl-dev libgdal-dev libharfbuzz-dev libnetcdf-dev libudunits2-dev libuv1-dev
         shell: bash
 
       - name: Install R pkgs
         run: |
-          Rscript -e 'install.packages(c("devtools", "dplyr", "here", "htmlwidgets", "httr", "leaflet", "purrr", "sf", "units", "usethis"))'
+          Rscript -e 'install.packages(c("bslig", "dplyr", "fs", here", "htmlwidgets", "httr", "leaflet", "miniUI", "pkgdown", "pkgload", "profivs", "purrr", "rmarkdown", "roxygen2", "sass", "shiny", "sf", "testthat", "units", "usethis"))'
 
       - name: Update boemWind pkg
         run: Rscript -e 'here::here("data-raw/dnld_get_boem_outlines.R") |> source()'
