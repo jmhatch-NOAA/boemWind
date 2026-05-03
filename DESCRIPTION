@@ -12,7 +12,6 @@ Description: Provide BOEM Office of Renewable Energy Program GIS data in sf obje
 License: file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Depends: 
     R (>= 4.1.0),
     sf
@@ -29,3 +28,4 @@ Suggests:
 LazyData: true
 LazyDataCompression: bzip2
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0

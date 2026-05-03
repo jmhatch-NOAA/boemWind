@@ -21,5 +21,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Joshua Hatch \email{joshua.hatch@noaa.gov}
 
+Authors:
+\itemize{
+  \item Joshua Hatch \email{joshua.hatch@noaa.gov}
+}
+
 }
 \keyword{internal}
