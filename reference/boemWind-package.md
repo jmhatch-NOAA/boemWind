@@ -14,3 +14,7 @@ Useful links:
 ## Author
 
 **Maintainer**: Joshua Hatch <joshua.hatch@noaa.gov>
+
+Authors:
+
+- Joshua Hatch <joshua.hatch@noaa.gov>

@@ -10,6 +10,7 @@ with R.
 ### Installation
 
 ``` r
+
 devtools::install_github('jmhatch-NOAA/boemWind')
 ```
 
