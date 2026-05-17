@@ -2,7 +2,7 @@ pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles: {}
-last_built: 2026-05-10T02:27Z
+last_built: 2026-05-17T02:34Z
 urls:
   reference: https://jmhatch-noaa.github.io/boemWind/reference
   article: https://jmhatch-noaa.github.io/boemWind/articles
